@@ -1,1 +1,660 @@
-<!DOCTYPE html> <html lang="ko"><head><script data-bard-client-injected="true">(function(firebaseConfig, initialAuthToken, appId) { window.__firebase_config = firebaseConfig; window.__initial_auth_token = initialAuthToken; window.__app_id = appId; })("\n{\n  \"apiKey\": \"AIzaSyCqyCcs2R2e7AegGjvFAwG98wlamtbHvZY\",\n  \"authDomain\": \"bard-frontend.firebaseapp.com\",\n  \"projectId\": \"bard-frontend\",\n  \"storageBucket\": \"bard-frontend.firebasestorage.app\",\n  \"messagingSenderId\": \"175205271074\",\n  \"appId\": \"1:175205271074:web:2b7bd4d34d33bf38e6ec7b\"\n}\n","eyJhbGciOiJSUzI1NiIsImtpZCI6IjExNjRiNzdiNDMzZDdhMDAyMWI4NjE4YjhjYTU3ZTMyZGI5MWUxMTMiLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJmaXJlYmFzZS1hZG1pbnNkay1mYnN2Y0BiYXJkLWZyb250ZW5kLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwiYXVkIjoiaHR0cHM6Ly9pZGVudGl0eXRvb2xraXQuZ29vZ2xlYXBpcy5jb20vZ29vZ2xlLmlkZW50aXR5LmlkZW50aXR5dG9vbGtpdC52MS5JZGVudGl0eVRvb2xraXQiLCJ1aWQiOiIwNjAxNzE2NDE4MjY4OTQ0ODg5MyIsImlzcyI6ImZpcmViYXNlLWFkbWluc2RrLWZic3ZjQGJhcmQtZnJvbnRlbmQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJjbGFpbXMiOnsiYXBwSWQiOiJjXzE4MGNkMWUzZmM0YzZkODNfNzZhNjMyNTNfbXlfcGxhbm5lcl9jb21wbGV0ZS5odG1sLTUwNSJ9LCJleHAiOjE3OTIzODM5NjMsImlhdCI6MTc5MjM4MDM2MywiYWxnIjoiUlMyNTYifQ.GhtvGeI1WH9umRv2RDKA-8SgbIfQsRyohgYQRV3UYOB6oLPj2bhQCAztA7zlgYLxOios7902sn5aEzgx8H5OPumEY3M_bMgMpYUvHHMSSUK8wOe53Vr2UPw69FQCpU-JHMyhdPKgvOwaMPx3ijM1f3kkB49Ogz1eBDqbAlHJaB-_90emnldovjdBzPLQtNy7Fa99wgvePKlrMgAITKAR1G7kZ3fEtZtNTCx5_lONX9v8Z1HGtFk0XSWW0Ol33iqItgn-da2Pv3tVig0CF2mENztqYXroI0pamLeCi36pOzPl9C5wcFGHcsRfAVrlYWrhTqhRq1HYXSAEa9yNA2H4dw","c_180cd1e3fc4c6d83_76a63253_my_planner_complete.html-505")</script><script data-bard-client-injected="true"> document.addEventListener('input', (event) => { if (event.target && (event.target.isContentEditable || event.target.hasAttribute('contenteditable'))) { const clonedDoc = document.cloneNode(true); const injectedScripts = clonedDoc.querySelectorAll('[data-bard-client-injected="true"]'); injectedScripts.forEach(el => el.remove()); window.parent.postMessage({ type: 'inlineEdit', html: '<!DOCTYPE html>\n' + clonedDoc.documentElement.outerHTML }, '*'); } }); </script><script data-bard-client-injected="true">(function(){'use strict';window.addEventListener("message",a=>{a.data&&a.data.type==="SUPPLEMENTAL_DATA_UPDATE"&&window.dispatchEvent(new CustomEvent("supplementaldataupdate",{detail:a.data.data}))});}).call(this); </script><script data-bard-client-injected="true">(function(){'use strict';var h=typeof Object.defineProperties=="function"?Object.defineProperty:function(a,b,c){if(a==Array.prototype||a==Object.prototype)return a;a[b]=c.value;return a};function l(a){a=["object"==typeof globalThis&&globalThis,a,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var b=0;b<a.length;++b){var c=a[b];if(c&&c.Math==Math)return c}throw Error("Cannot find global object");}var n=l(this); function p(a,b){if(b)a:{var c=n;a=a.split(".");for(var d=0;d<a.length-1;d++){var e=a[d];if(!(e in c))break a;c=c[e]}a=a[a.length-1];d=c[a];b=b(d);b!=d&&b!=null&&h(c,a,{configurable:!0,writable:!0,value:b})}}function r(a){function b(d){return a.next(d)}function c(d){return a.throw(d)}return new Promise(function(d,e){function f(g){g.done?d(g.value):Promise.resolve(g.value).then(b,c).then(f,e)}f(a.next())})}function t(a){return r(a())} p("Object.values",function(a){return a?a:function(b){var c=[],d;for(d in b)Object.prototype.hasOwnProperty.call(b,d)&&c.push(b[d]);return c}});p("Array.prototype.includes",function(a){return a?a:function(b,c){var d=this;d instanceof String&&(d=String(d));var e=d.length;c=c||0;for(c<0&&(c=Math.max(c+e,0));c<e;c++){var f=d[c];if(f===b||Object.is(f,b))return!0}return!1}});/* MIT License Copyright (c) 2017-2023 W.Y. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. */ function u(a,b){var c=a.style;b.backgroundColor&&(c.backgroundColor=b.backgroundColor);b.width&&(c.width=`${b.width}px`);b.height&&(c.height=`${b.height}px`);var d=b.style;d!=null&&Object.keys(d).forEach(e=>{c[e]=d[e]})};var v=(()=>{var a=0;return()=>{a+=1;return`u${`0000${(Math.random()*1679616<<0).toString(36)}`.slice(-4)}${a}`}})();function w(a){var b=[];for(let c=0,d=a.length;c<d;c++)b.push(a[c]);return b}let x=null;function y(a={}){return x?x:a.u?x=a.u:x=w(window.getComputedStyle(document.documentElement))}function z(a,b){return(a=(a.ownerDocument.defaultView||window).getComputedStyle(a).getPropertyValue(b))?parseFloat(a.replace("px","")):0} function A(a,b={}){var c;if(!(c=b.width)){c=z(a,"border-left-width");var d=z(a,"border-right-width");c=a.clientWidth+c+d}(b=b.height)||(b=z(a,"border-top-width"),d=z(a,"border-bottom-width"),b=a.clientHeight+b+d);return{width:c,height:b}}function B(a){return new Promise((b,c)=>{var d=new Image;d.onload=()=>{d.decode().then(()=>{requestAnimationFrame(()=>b(d))})};d.onerror=c;d.crossOrigin="anonymous";d.decoding="async";d.src=a})} function C(a){return t(function*(){return Promise.resolve().then(()=>(new XMLSerializer).serializeToString(a)).then(encodeURIComponent).then(b=>`data:image/svg+xml;charset=utf-8,${b}`)})} function D(a,b,c){return t(function*(){var d=document.createElementNS("http://www.w3.org/2000/svg","svg"),e=document.createElementNS("http://www.w3.org/2000/svg","foreignObject");d.setAttribute("width",`${b}`);d.setAttribute("height",`${c}`);d.setAttribute("viewBox",`0 0 ${b} ${c}`);e.setAttribute("width","100%");e.setAttribute("height","100%");e.setAttribute("x","0");e.setAttribute("y","0");e.setAttribute("externalResourcesRequired","true");d.appendChild(e);e.appendChild(a);return C(d)})} var E=(a,b)=>{if(a instanceof b)return!0;a=Object.getPrototypeOf(a);return a===null?!1:a.constructor.name===b.name||E(a,b)};function F(a,b){return y(b).map(c=>{var d=a.getPropertyValue(c),e=a.getPropertyPriority(c);return`${c}: ${d}${e?" !important":""};`}).join(" ")} function G(a,b,c,d){a=window.getComputedStyle(a,c);var e=a.getPropertyValue("content");if(e!==""&&e!=="none"){var f=v();try{b.className=`${b.className} ${f}`}catch(k){return}e=document.createElement("style");var g=e.appendChild;c=`.${f}:${c}`;a.cssText?(d=a.getPropertyValue("content"),d=`${a.cssText} content: '${d.replace(/'|"/g,"")}';`):d=F(a,d);g.call(e,document.createTextNode(`${c}{${d}}`));b.appendChild(e)}};function H(a){return a.search(/^(data:)/)!==-1}function I(a,b,c){return t(function*(){var d=yield fetch(a,b);if(d.status===404)throw Error(`Resource "${d.url}" not found`);var e=yield d.blob();return new Promise((f,g)=>{var k=new FileReader;k.onerror=g;k.onloadend=()=>{try{f(c({v:d,result:k.result}))}catch(m){g(m)}};k.readAsDataURL(e)})})}const J={};function aa(a,b,c){var d=a.replace(/\?.*/,"");c&&(d=a);/ttf|otf|eot|woff2?/i.test(d)&&(d=d.replace(/.*\//,""));return b?`[${b}]${d}`:d} function K(a,b,c){return t(function*(){var d=aa(a,b,c.F);if(J[d]!=null)return J[d];c.B&&(a+=(/\?/.test(a)?"&":"?")+(new Date).getTime());try{let f=yield I(a,c.l,({v:g,result:k})=>{b||(b=g.headers.get("Content-Type")||"");return k.split(/,/)[1]});var e=`data:${b};base64,${f}`}catch(f){e=c.o||""}return J[d]=e})};const L={R:"application/font-woff",S:"application/font-woff",O:"application/font-truetype",C:"application/vnd.ms-fontobject",J:"image/png",H:"image/jpeg",G:"image/jpeg",D:"image/gif",N:"image/tiff",M:"image/svg+xml",P:"image/webp"};function M(a){return(a=/\.([^./]*?)$/g.exec(a))?a[1]:""};function ba(a){return t(function*(){var b=a.toDataURL();return b==="data:,"?a.cloneNode(!1):B(b)})}function ca(a,b){return t(function*(){if(a.currentSrc){var c=document.createElement("canvas");let d=c.getContext("2d");c.width=a.clientWidth;c.height=a.clientHeight;d==null||d.drawImage(a,0,0,c.width,c.height);c=c.toDataURL();return B(c)}c=a.poster;c=yield K(c,L[M(c).toLowerCase()]||"",b);return B(c)})} function da(a,b){return t(function*(){try{let c;if(a==null?0:(c=a.contentDocument)==null?0:c.body)return yield N(a.contentDocument.body,b,!0)}catch(c){}return a.cloneNode(!1)})}function ea(a,b){return t(function*(){return E(a,HTMLCanvasElement)?ba(a):E(a,HTMLVideoElement)?ca(a,b):E(a,HTMLIFrameElement)?da(a,b):a.cloneNode(a.tagName!=null&&a.tagName.toUpperCase()==="SVG")})} function fa(a,b,c){return t(function*(){if(b.tagName!=null&&b.tagName.toUpperCase()==="SVG")return b;var d=[];if(a.tagName!=null&&a.tagName.toUpperCase()==="SLOT"&&a.assignedNodes)d=w(a.assignedNodes());else{let e;if(E(a,HTMLIFrameElement)&&((e=a.contentDocument)==null?0:e.body))d=w(a.contentDocument.body.childNodes);else{let f;d=w(((f=a.shadowRoot)!=null?f:a).childNodes)}}if(d.length===0||E(a,HTMLVideoElement))return b;yield d.reduce((e,f)=>e.then(()=>N(f,c)).then(g=>{g&&b.appendChild(g)}),Promise.resolve()); return b})}function ha(a,b,c){var d=b.style;if(d){var e=window.getComputedStyle(a);e.cssText?(d.cssText=e.cssText,d.transformOrigin=e.transformOrigin):y(c).forEach(f=>{var g=e.getPropertyValue(f);f==="font-size"&&g.endsWith("px")&&(g=`${Math.floor(parseFloat(g.substring(0,g.length-2)))-.1}px`);E(a,HTMLIFrameElement)&&f==="display"&&g==="inline"&&(g="block");f==="d"&&b.getAttribute("d")&&(g=`path(${b.getAttribute("d")})`);d.setProperty(f,g,e.getPropertyPriority(f))})}} function ia(a,b){E(a,HTMLSelectElement)&&(b=Array.from(b.children).find(c=>a.value===c.getAttribute("value")))&&b.setAttribute("selected","")} function ja(a,b){return t(function*(){var c=a.querySelectorAll?a.querySelectorAll("use"):[];if(c.length===0)return a;var d={};for(var e=0;e<c.length;e++){var f=c[e].getAttribute("xlink:href");if(f){let g=document.querySelector(f);a.querySelector(f)||!g||d[f]||(d[f]=yield N(g,b,!0))}}c=Object.values(d);if(c.length){d=document.createElementNS("http://www.w3.org/1999/xhtml","svg");d.setAttribute("xmlns","http://www.w3.org/1999/xhtml");d.style.position="absolute";d.style.width="0";d.style.height="0"; d.style.overflow="hidden";d.style.display="none";e=document.createElementNS("http://www.w3.org/1999/xhtml","defs");d.appendChild(e);for(f=0;f<c.length;f++)e.appendChild(c[f]);a.appendChild(d)}return a})} function N(a,b,c){return t(function*(){return c||!b.filter||b.filter(a)?Promise.resolve(a).then(d=>ea(d,b)).then(d=>fa(a,d,b)).then(d=>{E(d,Element)&&(ha(a,d,b),G(a,d,":before",b),G(a,d,":after",b),E(a,HTMLTextAreaElement)&&(d.textContent=a.value),E(a,HTMLInputElement)&&d.setAttribute("value",a.value),ia(a,d));return d}).then(d=>ja(d,b)):null})};const O=/url\((['"]?)([^'"]+?)\1\)/g,ka=/url\([^)]+\)\s*format\((["']?)([^"']+)\1\)/g,la=/src:\s*(?:url\([^)]+\)\s*format\([^)]+\)[,;]\s*)+/g;function ma(a){var b=[];a.replace(O,(c,d,e)=>{b.push(e);return c});return b.filter(c=>!H(c))} function na(a,b,c,d){return t(function*(){try{let e=c?(new URL(b,c||void 0)).toString():b,f;f=yield K(e,L[M(b).toLowerCase()]||"",d);return a.replace(new RegExp(`(url\\(['"]?)(${b.replace(/([.*+?^${}()|\[\]\/\\])/g,"\\$1")})(['"]?\\))`,"g"),`$1${f}$3`)}catch(e){}return a})}function oa(a,{K:b}){return b?a.replace(la,c=>{for(;;){let [d,,e]=ka.exec(c)||[];if(!e)return"";if(e===b)return`src: ${d};`}}):a} function P(a,b,c){return t(function*(){if(a.search(O)===-1)return a;var d=oa(a,c);return ma(d).reduce((e,f)=>e.then(g=>na(g,f,b,c)),Promise.resolve(d))})};function Q(a,b,c){return t(function*(){var d,e=(d=b.style)==null?void 0:d.getPropertyValue(a);return e?(d=yield P(e,null,c),b.style.setProperty(a,d,b.style.getPropertyPriority(a)),!0):!1})}function pa(a,b){return t(function*(){(yield Q("background",a,b))||(yield Q("background-image",a,b));(yield Q("mask",a,b))||(yield Q("-webkit-mask",a,b))||(yield Q("mask-image",a,b))||(yield Q("-webkit-mask-image",a,b))})} function qa(a,b){return t(function*(){var c=E(a,HTMLImageElement);if(c&&!H(a.src)||E(a,SVGImageElement)&&!H(a.href.baseVal)){var d=c?a.src:a.href.baseVal,e=yield K(d,L[M(d).toLowerCase()]||"",b);yield new Promise((f,g)=>{a.onload=f;a.onerror=b.h?(...k)=>{try{f(b.h(...k))}catch(m){g(m)}}:g;a.decode&&(a.decode=f);a.loading==="lazy"&&(a.loading="eager");c?(a.srcset="",a.src=e):a.href.baseVal=e})}})} function ra(a,b){return t(function*(){var c=w(a.childNodes).map(d=>R(d,b));yield Promise.all(c).then(()=>a)})}function R(a,b){return t(function*(){E(a,Element)&&(yield pa(a,b),yield qa(a,b),yield ra(a,b))})};const S={};function T(a){return t(function*(){var b=S[a];if(b!=null)return b;b=yield(yield fetch(a)).text();b={url:a,cssText:b};return S[a]=b})}function U(a,b){return t(function*(){var c=a.cssText,d=/url\(["']?([^"')]+)["']?\)/g,e=(c.match(/url\([^)]+\)/g)||[]).map(f=>t(function*(){var g=f.replace(d,"$1");g.startsWith("https://")||(g=(new URL(g,a.url)).href);return I(g,b.l,({result:k})=>{c=c.replace(f,`url(${k})`);return[f,k]})}));return Promise.all(e).then(()=>c)})} function V(a){if(a==null)return[];var b=[];a=a.replace(/(\/\*[\s\S]*?\*\/)/gi,"");for(var c=RegExp("((@.*?keyframes [\\s\\S]*?){([\\s\\S]*?}\\s*?)})","gi");;){var d=c.exec(a);if(d===null)break;b.push(d[0])}a=a.replace(c,"");c=/@import[\s\S]*?url\([^)]*\)[\s\S]*?;/gi;for(d=RegExp("((\\s*?(?:\\/\\*[\\s\\S]*?\\*\\/)?\\s*?@media[\\s\\S]*?){([\\s\\S]*?)}\\s*?})|(([\\s\\S]*?){([\\s\\S]*?)})","gi");;){let e=c.exec(a);if(e===null)if(e=d.exec(a),e===null)break;else c.lastIndex=d.lastIndex;else d.lastIndex= c.lastIndex;b.push(e[0])}return b} function sa(a,b){return t(function*(){var c=[],d=[];a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach((f,g)=>{if(f.type===CSSRule.IMPORT_RULE){let k=g+1;f=T(f.href).then(m=>U(m,b)).then(m=>V(m).forEach(q=>{try{e.insertRule(q,q.startsWith("@import")?k+=1:e.cssRules.length)}catch(Fa){}})).catch(()=>{});d.push(f)}})}catch(f){let g=a.find(k=>k.href==null)||document.styleSheets[0];e.href!=null&&d.push(T(e.href).then(k=>U(k,b)).then(k=>V(k).forEach(m=>{g.insertRule(m,g.cssRules.length)})).catch(()=> {}))}});return Promise.all(d).then(()=>{a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach(f=>{c.push(f)})}catch(f){}});return c})})}function ta(a){return a.filter(b=>b.type===CSSRule.FONT_FACE_RULE).filter(b=>b.style.getPropertyValue("src").search(O)!==-1)}function ua(a,b){return t(function*(){if(a.ownerDocument==null)throw Error("Provided element is not within a Document");var c=w(a.ownerDocument.styleSheets);c=yield sa(c,b);return ta(c)})} function va(a){function b(d){(d.style.fontFamily||getComputedStyle(d).fontFamily).split(",").forEach(e=>{c.add(e.trim().replace(/["']/g,""))});Array.from(d.children).forEach(e=>{e instanceof HTMLElement&&b(e)})}var c=new Set;b(a);return c}function wa(a,b){return t(function*(){var c=yield ua(a,b),d=va(a);return(yield Promise.all(c.filter(e=>d.has(e.style.fontFamily.trim().replace(/["']/g,""))).map(e=>P(e.cssText,e.parentStyleSheet?e.parentStyleSheet.href:null,b)))).join("\n")})} function xa(a,b){return t(function*(){var c=b.m!=null?b.m:b.A?null:yield wa(a,b);if(c){let d=document.createElement("style");d.appendChild(document.createTextNode(c));a.firstChild?a.insertBefore(d,a.firstChild):a.appendChild(d)}})};function ya(a,b={}){return t(function*(){var {width:c,height:d}=A(a,b),e=yield N(a,b,!0);yield xa(e,b);yield R(e,b);u(e,b);return yield D(e,c,d)})} function za(a,b={}){return t(function*(){var {width:c,height:d}=A(a,b),e=yield ya(a,b);e=yield B(e);var f=document.createElement("canvas"),g=f.getContext("2d"),k=b.I||window.devicePixelRatio||1,m=b.j||c,q=b.i||d;f.width=m*k;f.height=q*k;!b.L&&(f.width>16384||f.height>16384)&&(f.width>16384&&f.height>16384?f.width>f.height?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=16384):f.width>16384?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=16384)); f.style.width=`${m}`;f.style.height=`${q}`;b.backgroundColor&&(g.fillStyle=b.backgroundColor,g.fillRect(0,0,f.width,f.height));g.drawImage(e,0,0,f.width,f.height);return f})}function Aa(a,b={}){return t(function*(){return(yield za(a,b)).toDataURL()})};const Ba=["gemini.google.com","corp.google.com","proxy.googlers.com"];function W(){return document.body.querySelectorAll('[class*="animate"]').length>0}function X(a,b){var c=document.createElement("canvas");c.width=a;c.height=b;return c.toDataURL("image/png")}const Y=X(1,1); function Z(a){return t(function*(){try{return yield Aa(a,{j:a.offsetWidth,i:a.offsetHeight,A:!0,filter:b=>{if(b.tagName==="IMG"){let c=b.getAttribute("src");if(!c||c.trim()===""||b.style.display==="none")return!1}return!0},o:Y,h:()=>Y})}catch(b){return X(a.offsetWidth,a.offsetHeight)}})} function Ca(){return t(function*(){var a=document.body.offsetWidth,b=document.body.offsetHeight,c=document.body.cloneNode(!0);c.querySelectorAll('[class*="animate"]').forEach(d=>{d.classList.remove(...Array.from(d.classList).filter(e=>e.startsWith("animate")))});c.style.width=`${a}px`;c.style.height=`${b}px`;return c})} function Da(a){return t(function*(){var b=document.body;if(W()){var c=yield Ca();b=c;document.body.appendChild(c)}c=yield Z(b);W()&&document.body.removeChild(b);window.parent.postMessage({type:"SEND_SCREENSHOT",image:c,topOffset:document.documentElement.scrollTop},a.origin)})}function Ea(a){return t(function*(){var b={type:"SEND_SCREENSHOT_FOR_DATA_VISUALIZATION",image:yield Z(document.body),topOffset:0};window.parent.postMessage(b,a.origin)})} window.addEventListener("message",a=>t(function*(){if(Ba.some(c=>a.origin.includes(c))){var b=a.data;b&&(b.type==="MAKE_SCREENSHOT"&&(yield Da(a)),b.type==="MAKE_SCREENSHOT_FOR_DATA_VISUALIZATION"&&(yield Ea(a)))}})); })();</script><script data-bard-client-injected="true">(function() { // Ensure this script is executed only once if (window.firebaseAuthBridgeScriptLoaded) { return; } window.firebaseAuthBridgeScriptLoaded = true; let nextTokenPromiseId = 0; // Stores { resolve, reject } for ongoing token requests const pendingTokenPromises = {}; // Listen for messages from the Host Application window.addEventListener('message', function(event) { const messageData = event.data; if (messageData && messageData.type === 'RESOLVE_NEW_FIREBASE_TOKEN') { const { success, token, error, promiseId } = messageData ?? {}; if (pendingTokenPromises[promiseId]) { if (success) { pendingTokenPromises[promiseId].resolve(token); } else { pendingTokenPromises[promiseId].reject(new Error(error || 'Token refresh failed from host.')); } delete pendingTokenPromises[promiseId]; } } }); // Expose a function for the Generated App to request a new Firebase token window.requestNewFirebaseToken = function() { const currentPromiseId = nextTokenPromiseId++; const promise = new Promise((resolve, reject) => { pendingTokenPromises[currentPromiseId] = { resolve, reject }; }); if (window.parent && window.parent !== window) { window.parent.postMessage({ type: 'REQUEST_NEW_FIREBASE_TOKEN', promiseId: currentPromiseId }, '*'); } else { pendingTokenPromises[currentPromiseId].reject(new Error('No parent window to request token from.')); delete pendingTokenPromises[currentPromiseId]; } return promise; }; })();</script><script data-bard-client-injected="true"> let realOriginalGetUserMedia = null; if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) { realOriginalGetUserMedia = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices); } (function() { if (navigator.mediaDevices && navigator.mediaDevices.__proto__) { try { Object.defineProperty(navigator.mediaDevices.__proto__, 'getUserMedia', { get: function() { return undefined; // Or throw an error }, configurable: false }); } catch (error) { console.error("Error defining prototype getter:", error); } } })(); (function() { const pendingMediaResolvers = {}; let nextMediaPromiseId = 0; function requestMediaPermissions(constraints) { const mediaPromiseId = nextMediaPromiseId++; const promise = new Promise((resolve, reject) => { pendingMediaResolvers[mediaPromiseId] = (granted) => { delete pendingMediaResolvers[mediaPromiseId]; resolve(granted); }; }); window.parent.postMessage({ type: 'requestMediaPermission', constraints: constraints, promiseId: mediaPromiseId, }, '*'); return promise; } let originalGetUserMedia = realOriginalGetUserMedia; function interceptGetUserMedia() { if (navigator.mediaDevices) { Object.defineProperty(navigator.mediaDevices, 'getUserMedia', { value: function(constraints) { return requestMediaPermissions(constraints).then((granted) => { if (granted) { if (originalGetUserMedia) { return originalGetUserMedia(constraints); } else { throw new Error("Original getUserMedia not available."); } } else { throw new DOMException('Permission denied', 'NotAllowedError'); } }); }, writable: false, configurable: false }); } } interceptGetUserMedia(); const observer = new MutationObserver(function(mutationsList, observer) { for (const mutation of mutationsList) { if (mutation.type === 'reconfigured' && mutation.name === 'getUserMedia' && mutation.object === navigator.mediaDevices) { interceptGetUserMedia(); } else if (mutation.type === 'attributes' && mutation.attributeName === 'getUserMedia' && mutation.target === navigator.mediaDevices) { interceptGetUserMedia(); } else if (mutation.type === 'childList' && mutation.addedNodes) { mutation.addedNodes.forEach(node => { if (node === navigator.mediaDevices) { interceptGetUserMedia(); } }); } } }); function interceptSpeechRecognition() { if (!window.SpeechRecognition && !window.webkitSpeechRecognition) { return; } const OriginalSpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition; const SpeechRecognitionWrapper = function(...args) { const recognizer = new OriginalSpeechRecognition(...args); const originalStart = recognizer.start.bind(recognizer); recognizer.start = function() { requestMediaPermissions({ audio: true }).then(granted => { if (granted) { originalStart(); } else { const errorEvent = new SpeechRecognitionErrorEvent('error'); errorEvent.error = 'not-allowed'; // This is the standard error for permission denial. recognizer.dispatchEvent(errorEvent); } }); }; return recognizer; }; SpeechRecognitionWrapper.prototype = OriginalSpeechRecognition.prototype; SpeechRecognitionWrapper.prototype.constructor = SpeechRecognitionWrapper; if (window.SpeechRecognition) { window.SpeechRecognition = SpeechRecognitionWrapper; } if (window.webkitSpeechRecognition) { window.webkitSpeechRecognition = SpeechRecognitionWrapper; } } interceptSpeechRecognition(); window.addEventListener('message', function(event) { if (event.data) { if (event.data.type === 'resolveMediaPermission') { const { promiseId, granted } = event.data; if (pendingMediaResolvers[promiseId]) { pendingMediaResolvers[promiseId](granted); } } } }); })();</script><script ws-interception-config="{&quot;parentOrigin&quot;:&quot;https://gemini.google.com&quot;,&quot;proxiedDomains&quot;:[]}" data-bard-client-injected="true">(function(){'use strict';var u=typeof Object.defineProperties=="function"?Object.defineProperty:function(b,d,e){if(b==Array.prototype||b==Object.prototype)return b;b[d]=e.value;return b};function v(b){b=["object"==typeof globalThis&&globalThis,b,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var d=0;d<b.length;++d){var e=b[d];if(e&&e.Math==Math)return e}throw Error("Cannot find global object");}var w=v(this); function y(b,d){if(d)a:{var e=w;b=b.split(".");for(var h=0;h<b.length-1;h++){var k=b[h];if(!(k in e))break a;e=e[k]}b=b[b.length-1];h=e[b];d=d(h);d!=h&&d!=null&&u(e,b,{configurable:!0,writable:!0,value:d})}}function z(b){function d(h){return b.next(h)}function e(h){return b.throw(h)}return new Promise(function(h,k){function m(n){n.done?h(n.value):Promise.resolve(n.value).then(d,e).then(m,k)}m(b.next())})}y("globalThis",function(b){return b||w});/* Copyright The Closure Library Authors. SPDX-License-Identifier: Apache-2.0 */ function A(b,d){function e(){}e.prototype=d.prototype;b.j=d.prototype;b.prototype=new e;b.prototype.constructor=b;b.h=function(h,k,m){for(var n=Array(arguments.length-2),p=2;p<arguments.length;p++)n[p-2]=arguments[p];return d.prototype[k].apply(h,n)}};function B(b,d,e="*"){function h(a){if(typeof a==="string")return F.encode(a).buffer;if(a instanceof ArrayBuffer)return a.slice(0);if(ArrayBuffer.isView(a))return a.buffer.slice(a.byteOffset,a.byteOffset+a.byteLength);throw Error("Invalid data type");}function k(a){a=h(a);var f={type:"send",data:new Uint8Array(a)},g;(g=r)==null||g.postMessage(f,[a])}function m(){if(!r)throw Error("Data port not captured yet.");r.onmessage=a=>{if(a.data.type==="message"){a=new MessageEvent("message",{data:G.decode(a.data.data)}); let f;(f=c.onmessage)==null||f.call(c,a);c.dispatchEvent(a)}}}function n(){if(!t)throw Error("Control port not captured yet.");t.onmessage=a=>{switch(a.data.type){case "open":l=1;var f=new Event("open"),g;(g=c.onopen)==null||g.call(c,f);c.dispatchEvent(f);q.forEach(H=>{k(H)});q=[];break;case "close":g=a.data;l=3;g=new CloseEvent("close",{code:g.code,reason:g.reason,wasClean:g.wasClean});(f=c.onclose)==null||f.call(c,g);c.dispatchEvent(g);break;case "error":l=3;f=new Event("error");let x;(x=c.onerror)== null||x.call(c,f);c.dispatchEvent(f)}}}function p(a){return z(function*(){var f=new MessageChannel;t=f.port1;var g=new MessageChannel;r=g.port1;n();m();window.parent.postMessage({type:"websocket_open",portOrdering:["control","data"],url:b,protocols:a||[],connectionId:I},e,[f.port2,g.port2])}())}var c=Reflect.construct(EventTarget,[],new.target);c.CONNECTING=0;c.OPEN=1;c.CLOSING=2;c.CLOSED=3;c.url=b;c.binaryType="arraybuffer";c.protocol="";c.i="";var l=0,t=null,r=null,q=[],F=new TextEncoder,G=new TextDecoder; c.onopen=null;c.onmessage=null;c.onclose=null;c.onerror=null;Object.defineProperty(c,"readyState",{get:()=>l,enumerable:!0,configurable:!0});Object.defineProperty(c,"bufferedAmount",{get:()=>{var a=0;q.forEach(f=>{a+=typeof f==="string"?f.length:f.byteLength});return a},enumerable:!0,configurable:!0});var I=function(){var a;return((a=globalThis.crypto)==null?0:a.randomUUID)?globalThis.crypto.randomUUID():"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,f=>{var g=Math.random()*16|0;return(f=== "x"?g:g&3|8).toString(16)})}();c.send=a=>{if(l===1)a instanceof Blob?a.arrayBuffer().then(f=>{k(f)}):k(a);else if(l===0)if(typeof a==="string")q.push(a);else if(a instanceof ArrayBuffer||ArrayBuffer.isView(a))q.push(h(a));else throw Error("Sending Blob is not supported before the connection is open.");else console.debug("WebSocket send called in CLOSING or CLOSED state; ignored.")};c.close=(a=1E3,f="")=>{if(l!==2&&l!==3){l=2;a={type:"close",code:a,reason:f,wasClean:a===1E3};var g;(g=t)==null||g.postMessage(a)}}; Promise.resolve().then(()=>p(d));return c}A(B,EventTarget);var C=document.currentScript,D=C==null?void 0:C.getAttribute("ws-interception-config");if(!D)throw Error("WebSocket Interceptor: Missing ws-interception-config attribute in the script tag.");var E=JSON.parse(D);if(!E.parentOrigin||typeof E.parentOrigin!=="string")throw Error("WebSocket Interceptor: Invalid parentOrigin in ws-interception-config"); (function(b){var d=Object.getOwnPropertyDescriptor(window,"WebSocket");if(!d||d.writable||d.configurable)d=Object.assign(function(e,h){try{let k=(new URL(e)).hostname;if(b.proxiedDomains.some(m=>k===m||k.endsWith(`.${m}`)))return new B(e,h,b.parentOrigin)}catch(k){throw window.parent.postMessage({type:"websocket_blocked",url:e,reason:"blocked_invalid_url"},b.parentOrigin),new DOMException(`WebSocket connection to '${e}' is not allowed in Canvas.`,"SecurityError");}window.parent.postMessage({type:"websocket_blocked", url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMException(`WebSocket connection to '${e}' is not allowed in Canvas.`,"SecurityError");},{CONNECTING:0,OPEN:1,CLOSING:2,CLOSED:3}),Object.defineProperty(window,"WebSocket",{value:d,writable:!1,configurable:!1})})({proxiedDomains:E.proxiedDomains||[],parentOrigin:E.parentOrigin});}).call(this); </script><script data-bard-client-injected="true">((function(modelInformation) { const originalFetch = window.fetch; // TODO: b/421908508 - Move these out of the script and match all generative AI model calls. let googleLlmBaseApiUrls = [ 'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':streamGenerateContent', 'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':generateContent', 'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predict', 'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predictLongRunning', 'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageEditModelName + ':generateContent', 'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageTransformModelName + ':generateContent', 'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predict', 'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predictLongRunning', 'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.ttsModelName + ':generateContent', ]; modelInformation.deprecatedTextModelNames.forEach((modelName) => { googleLlmBaseApiUrls.push( 'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent', 'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent', ); }); modelInformation.deprecatedImageModelNames.forEach((modelName) => { googleLlmBaseApiUrls.push( 'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predict', 'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predictLongRunning', 'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent', 'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent', ); }); modelInformation.deprecatedGenerateImageModelNames.forEach((modelName) => { googleLlmBaseApiUrls.push( 'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent', 'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent', ); }); modelInformation.deprecatedImageTransformModelNames.forEach((modelName) => { googleLlmBaseApiUrls.push( 'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent', 'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent', ); }); const pendingFetchResolvers = {}; let nextPromiseId = 0; function handleStringInput(input, optionsArgument) { const actualUrl = input; const fetchCallArgs = [actualUrl, optionsArgument]; const effectiveOptions = optionsArgument || {}; const bodyForApiKeyCheck = effectiveOptions.body; const bodyForPostMessage = effectiveOptions.body; return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage }; } function handleRequestInput(input, optionsArgument) { const actualUrl = input.url; const fetchCallArgs = [input, optionsArgument]; const effectiveOptions = { method: input.method, headers: new Headers(input.headers) }; let bodyForApiKeyCheck; let bodyForPostMessage; if (optionsArgument) { if (optionsArgument.method) effectiveOptions.method = optionsArgument.method; if (optionsArgument.headers) effectiveOptions.headers = new Headers(optionsArgument.headers); if ('body' in optionsArgument) { bodyForApiKeyCheck = optionsArgument.body; bodyForPostMessage = optionsArgument.body; } else { bodyForApiKeyCheck = undefined; bodyForPostMessage = input.body; } } else { bodyForApiKeyCheck = undefined; bodyForPostMessage = input.body; } return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage }; } window.fetch = function(input, optionsArgument) { let actualUrl; let fetchCallArgs; let effectiveOptions = {}; let bodyForApiKeyCheck; let bodyForPostMessage; if (typeof input === 'string') { ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleStringInput(input, optionsArgument)); } else if (input instanceof Request) { ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleRequestInput(input, optionsArgument)); } else { return originalFetch.apply(window, [input, optionsArgument]); } effectiveOptions.method = effectiveOptions.method || 'GET'; if (!effectiveOptions.headers) { effectiveOptions.headers = new Headers(); } if (typeof actualUrl === 'string' && googleLlmBaseApiUrls.some((url) => actualUrl.startsWith(url))) { let apiKeyIsNull = true; const regex = new RegExp("models/([^:]+)"); const modelNameMatch = actualUrl.match(regex); const modelName = modelNameMatch ? modelNameMatch[1] : 'unspecified'; try { const urlObject = new URL(actualUrl);  // Use URL object for robust parsing const apiKeyParam = urlObject.searchParams.get('key'); if (apiKeyParam) { apiKeyIsNull = false; } } catch (e) { // Continue checks even if URL parsing fails } if (apiKeyIsNull && effectiveOptions.headers) { const h = new Headers(effectiveOptions.headers); const apiKeyHeaderValue = h.get('X-API-Key') || h.get('x-api-key'); if (apiKeyHeaderValue) { apiKeyIsNull = false; return originalFetch.apply(window, fetchCallArgs); } } if (apiKeyIsNull && effectiveOptions.method && ['POST', 'PUT', 'PATCH'].includes(effectiveOptions.method.toUpperCase()) && typeof bodyForApiKeyCheck === 'string') { try { const bodyData = JSON.parse(bodyForApiKeyCheck); if (bodyData && bodyData.apiKey) { apiKeyIsNull = false; return originalFetch.apply(window, fetchCallArgs); } } catch (e) { // Ignore JSON parsing errors } } if(apiKeyIsNull) { const promiseId = nextPromiseId++; const promise = new Promise((resolve) => { pendingFetchResolvers[promiseId] = (resolvedResponse) => { delete pendingFetchResolvers[promiseId]; resolve(resolvedResponse); }; }); let serializedBodyForPostMessage; if (typeof bodyForPostMessage === 'string' || bodyForPostMessage == null) { serializedBodyForPostMessage = bodyForPostMessage; } else if (bodyForPostMessage instanceof ReadableStream) { serializedBodyForPostMessage = null; } else { try { serializedBodyForPostMessage = JSON.stringify(bodyForPostMessage); } catch (e) { serializedBodyForPostMessage = null; } } const messageOptions = { method: effectiveOptions.method, headers: Object.fromEntries(new Headers(effectiveOptions.headers).entries()), body: serializedBodyForPostMessage }; window.parent.postMessage({ type: 'requestFetch', url: actualUrl, modelName: modelName, options: messageOptions, promiseId: promiseId, }, '*'); return promise; } return originalFetch.apply(window, fetchCallArgs); } return originalFetch.apply(window, fetchCallArgs); }; window.addEventListener('message', function(event) { if (event.data && event.data.type === 'resolveFetch') { const { promiseId, response } = event.data; if (pendingFetchResolvers[promiseId]) { try { const reconstructedResponse = new Response(response.body, { status: response.status, statusText: response.statusText, headers: new Headers(response.headers), }); pendingFetchResolvers[promiseId](reconstructedResponse); } catch (error) { pendingFetchResolvers[promiseId](new Response(null, { status: 500, statusText: "Interceptor Response Reconstruction Error" })); } } } }); }))({"textModelName":"gemini-3-flash-preview","imageModelName":"imagen-4.0-generate-001","imageEditModelName":"gemini-3.1-flash-image","imageTransformModelName":"gemini-3-pro-image","videoModelName":"veo-2.0-generate-001","ttsModelName":"gemini-2.5-flash-preview-tts","deprecatedTextModelNames":["gemini-2.0-flash","gemini-2.5-flash","gemini-2.5-flash-preview-04-17","gemini-2.5-flash-preview-05-20","gemini-2.5-flash-preview-09-2025"],"deprecatedImageModelNames":["imagen-3.0-generate-001","imagen-3.0-generate-002"],"deprecatedGenerateImageModelNames":["gemini-2.5-flash-image-preview","gemini-2.5-flash-image","gemini-3.1-flash-image-preview"],"deprecatedImageTransformModelNames":["gemini-3-pro-image-preview-11-2025"]})</script><script data-bard-client-injected="true">(function(){'use strict';function a(){window.parent.postMessage({type:"interaction"},"*")}window.addEventListener("click",a,{capture:!0,passive:!0});window.addEventListener("touchstart",a,{capture:!0,passive:!0});window.addEventListener("keydown",a,{capture:!0,passive:!0});}).call(this); </script><script data-bard-client-injected="true">(function() { const originalConsoleLog = console.log; const originalConsoleError = console.error; /** * Normalizes an error event or a promise rejection reason into a structured error object. * @param {*} errorEventOrReason The error object or reason. * @return {object} Structured error data { message, name, stack }. */ function getErrorObject(errorEventOrReason) { if (errorEventOrReason instanceof Error) { return { message: errorEventOrReason.message, name: errorEventOrReason.name, stack: errorEventOrReason.stack, }; } // Fallback for non-Error objects. try { return { message: JSON.stringify(errorEventOrReason), name: 'UnknownErrorType', stack: null, }; } catch (e) { return { message: String(errorEventOrReason), name: 'UnknownErrorTypeNonStringifiable', stack: null, }; } } /** * Converts an array of arguments (from log/error) into a single string. * Handles Error objects specially to include their message and stack. * @param {Array<*>} args - Arguments passed to console methods. * @return {string} A string representation of the arguments. */ function stringifyArgs(args) { return args .map((arg) => { if (arg instanceof Error) { const {message, stack} = arg; return `Error: ${message}${stack ? ('\nStack: ' + stack) : ''}`; } if (typeof arg === 'object' && arg !== null) { try { return JSON.stringify(arg); } catch (error) { return '[Circular Object]'; } } else { return String(arg); } }) .join(' '); } console.log = function(...args) { const logString = stringifyArgs(args); window.parent.postMessage({ type: 'log', message: logString }, '*'); originalConsoleLog.apply(console, args); }; console.error = function(...args) { let errorData; if (args.length > 0 && args[0] instanceof Error) { const err = args[0]; // If the first arg is an Error, capture its details. errorData = { type: 'error', source: 'CONSOLE_ERROR', ...getErrorObject(err), rawArgsString: stringifyArgs(args.slice(1)), timestamp: new Date().toISOString(), }; } else { // If not an Error object, treat all args as a general error message. errorData = { type: 'error', source: 'CONSOLE_ERROR', message: stringifyArgs(args), name: 'ConsoleLoggedError', stack: null, timestamp: new Date().toISOString(), }; } window.parent.postMessage(errorData, '*'); originalConsoleError.apply(console, args); }; // Listen for global unhandled synchronous errors. window.addEventListener('error', function(event) { const errorDetails = event.error ? getErrorObject(event.error) : { message: event.message, name: 'GlobalError', stack: null, filename: event.filename, lineno: event.lineno, colno: event.colno, }; window.parent.postMessage({ type: 'error', source: 'global', ...errorDetails, message: errorDetails.message || event.message, timestamp: new Date().toISOString(), }, '*'); }); // Listen for unhandled promise rejections (asynchronous errors). windo
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="마이 플래너">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="마이 플래너">
+<meta name="theme-color" content="#4f46e5">
+<meta name="format-detection" content="telephone=no">
+<!-- 오프라인 내장 앱 아이콘 (SVG Data URI) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='28' fill='%234f46e5'/%3E%3Crect x='24' y='30' width='72' height='66' rx='12' fill='none' stroke='%23ffffff' stroke-width='7'/%3E%3Cline x1='24' y1='48' x2='96' y2='48' stroke='%23ffffff' stroke-width='7'/%3E%3Cline x1='42' y1='20' x2='42' y2='34' stroke='%23ffffff' stroke-width='7' stroke-linecap='round'/%3E%3Cline x1='78' y1='20' x2='78' y2='34' stroke='%23ffffff' stroke-width='7' stroke-linecap='round'/%3E%3Ccircle cx='46' cy='66' r='5' fill='%2334d399'/%3E%3Ccircle cx='60' cy='66' r='5' fill='%23fbbf24'/%3E%3Ccircle cx='74' cy='66' r='5' fill='%23ffffff'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='28' fill='%234f46e5'/%3E%3Crect x='24' y='30' width='72' height='66' rx='12' fill='none' stroke='%23ffffff' stroke-width='7'/%3E%3Cline x1='24' y1='48' x2='96' y2='48' stroke='%23ffffff' stroke-width='7'/%3E%3Cline x1='42' y1='20' x2='42' y2='34' stroke='%23ffffff' stroke-width='7' stroke-linecap='round'/%3E%3Cline x1='78' y1='20' x2='78' y2='34' stroke='%23ffffff' stroke-width='7' stroke-linecap='round'/%3E%3Ccircle cx='46' cy='66' r='5' fill='%2334d399'/%3E%3Ccircle cx='60' cy='66' r='5' fill='%23fbbf24'/%3E%3Ccircle cx='74' cy='66' r='5' fill='%23ffffff'/%3E%3C/svg%3E">
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22%EB%A7%88%EC%9D%B4%20%ED%94%8C%EB%9E%98%EB%84%88%22%2C%22short_name%22%3A%22%EB%A7%88%EC%9D%B4%ED%94%8C%EB%9E%98%EB%84%88%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230f172a%22%2C%22theme_color%22%3A%22%234f46e5%22%7D">
+<title>마이 플래너 - 완전 오프라인 모바일 일정 관리 앱</title>
+<style>
+/* ================= 1. 기본 리셋 (Tailwind Preflight 호환 내장 CSS) ================= /
+, ::before, ::after { box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e2e8f0; -webkit-tap-highlight-color: transparent; }
+html { line-height: 1.5; -webkit-text-size-adjust: 100%; font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Malgun Gothic", system-ui, Roboto, sans-serif; }
+body { margin: 0; padding: 0; line-height: inherit; background-color: #0f172a; color: #1e293b; overscroll-behavior-y: none; }
+h1, h2, h3, h4, h5, h6, p { margin: 0; font-size: inherit; font-weight: inherit; }
+button, input, optgroup, select, textarea { font-family: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-size: 100%; font-weight: inherit; line-height: inherit; color: inherit; margin: 0; padding: 0; background-color: transparent; }
+button, select { text-transform: none; }
+button, [type='button'], [type='reset'], [type='submit'] { -webkit-appearance: button; background-image: none; cursor: pointer; }
+img, svg, video, canvas { display: block; vertical-align: middle; }
+img, video { max-width: 100%; height: auto; }
+textarea { resize: vertical; }
+input::placeholder, textarea::placeholder { opacity: 1; color: #94a3b8; }
+/ 안전 영역(노치/홈바) 대응 /
+#app-header { padding-top: max(0.75rem, env(safe-area-inset-top)); }
+footer { padding-bottom: max(0.625rem, env(safe-area-inset-bottom)); }
+/ 스크롤바 숨김 및 애니메이션 /
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.fade-in { animation: fadeIn 0.18s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+.slide-up { animation: slideUp 0.22s cubic-bezier(0.16, 1, 0.3, 1); }
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+/ 커스텀 배경 활성화 시 카드 반투명 글래스 효과 /
+.has-custom-bg .glass-panel { background-color: rgba(255, 255, 255, var(--card-Alpha, 0.88)) !important; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+/ ================= 2. 레이아웃 / 포지션 / 디스플레이 유틸리티 ================= /
+.hidden { display: none !important; }
+.block { display: block; }
+.inline-block { display: inline-block; }
+.inline { display: inline; }
+.flex { display: flex; }
+.grid { display: grid; }
+.relative { position: relative; }
+.absolute { position: absolute; }
+.sticky { position: sticky; }
+.inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+.top-0 { top: 0; }
+.bottom-16 { bottom: 4rem; }
+.right-4 { right: 1rem; }
+.left-1/2 { left: 50%; }
+.-translate-x-1/2 { transform: translateX(-50%); }
+.z-0 { z-index: 0; }
+.z-10 { z-index: 10; }
+.z-20 { z-index: 20; }
+.z-30 { z-index: 30; }
+.z-40 { z-index: 40; }
+.z-50 { z-index: 50; }
+/ ================= 3. Flexbox & Grid 유틸리티 ================= /
+.flex-col { flex-direction: column; }
+.flex-wrap { flex-wrap: wrap; }
+.flex-1 { flex: 1 1 0%; }
+.flex-[2] { flex: 2 2 0%; }
+.shrink-0 { flex-shrink: 0; }
+.min-w-0 { min-width: 0px; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-end { justify-content: flex-end; }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.grid-cols-7 { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+.gap-0.5 { gap: 0.125rem; }
+.gap-1 { gap: 0.25rem; }
+.gap-1.5 { gap: 0.375rem; }
+.gap-2 { gap: 0.5rem; }
+.gap-2.5 { gap: 0.625rem; }
+.gap-3 { gap: 0.75rem; }
+.gap-y-1 { row-gap: 0.25rem; }
+.space-y-1 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.25rem; }
+.space-y-2 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.5rem; }
+.space-y-2.5 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.625rem; }
+.space-y-3 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.75rem; }
+.space-y-3.5 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.875rem; }
+.space-y-4 > :not([hidden]) ~ :not([hidden]) { margin-top: 1rem; }
+/ ================= 4. 크기(Width / Height) & 오버플로우 ================= /
+.w-1 { width: 0.25rem; }
+.w-1.5 { width: 0.375rem; }
+.w-2 { width: 0.5rem; }
+.w-3 { width: 0.75rem; }
+.w-3.5 { width: 0.875rem; }
+.w-4 { width: 1rem; }
+.w-5 { width: 1.25rem; }
+.w-6 { width: 1.5rem; }
+.w-7 { width: 1.75rem; }
+.w-8 { width: 2rem; }
+.w-9 { width: 2.25rem; }
+.w-10 { width: 2.5rem; }
+.w-11 { width: 2.75rem; }
+.w-12 { width: 3rem; }
+.w-13 { width: 3.25rem; }
+.w-20 { width: 5rem; }
+.w-full { width: 100%; }
+.max-w-[430px] { max-width: 430px; }
+.h-1 { height: 0.25rem; }
+.h-1.5 { height: 0.375rem; }
+.h-2 { height: 0.5rem; }
+.h-2.5 { height: 0.625rem; }
+.h-3 { height: 0.75rem; }
+.h-3.5 { height: 0.875rem; }
+.h-4 { height: 1rem; }
+.h-5 { height: 1.25rem; }
+.h-6 { height: 1.5rem; }
+.h-7 { height: 1.75rem; }
+.h-8 { height: 2rem; }
+.h-9 { height: 2.25rem; }
+.h-11 { height: 2.75rem; }
+.h-12 { height: 3rem; }
+.h-13 { height: 3.25rem; }
+.h-16 { height: 4rem; }
+.h-28 { height: 7rem; }
+.h-full { height: 100%; }
+.h-[100dvh] { height: 100vh; height: 100dvh; }
+.min-h-screen { min-height: 100vh; }
+.min-h-[34px] { min-height: 34px; }
+.min-h-[54px] { min-height: 54px; }
+.min-h-[56px] { min-height: 56px; }
+.max-h-[88dvh] { max-height: 88vh; max-height: 88dvh; }
+.max-h-[90dvh] { max-height: 90vh; max-height: 90dvh; }
+.overflow-hidden { overflow: hidden; }
+.overflow-x-auto { overflow-x: auto; }
+.overflow-y-auto { overflow-y: auto; }
+.object-cover { object-fit: cover; }
+/ ================= 5. 여백(Padding / Margin) ================= /
+.p-1 { padding: 0.25rem; }
+.p-2 { padding: 0.5rem; }
+.p-2.5 { padding: 0.625rem; }
+.p-3 { padding: 0.75rem; }
+.p-3.5 { padding: 0.875rem; }
+.p-4 { padding: 1rem; }
+.p-5 { padding: 1.25rem; }
+.p-6 { padding: 1.5rem; }
+.p-8 { padding: 2rem; }
+.px-1 { padding-left: 0.25rem; padding-right: 0.25rem; }
+.px-1.5 { padding-left: 0.375rem; padding-right: 0.375rem; }
+.px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+.px-2.5 { padding-left: 0.625rem; padding-right: 0.625rem; }
+.px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+.px-3.5 { padding-left: 0.875rem; padding-right: 0.875rem; }
+.px-4 { padding-left: 1rem; padding-right: 1rem; }
+.py-0.5 { padding-top: 0.125rem; padding-bottom: 0.125rem; }
+.py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+.py-1.5 { padding-top: 0.375rem; padding-bottom: 0.375rem; }
+.py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.py-2.5 { padding-top: 0.625rem; padding-bottom: 0.625rem; }
+.py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+.pt-1 { padding-top: 0.25rem; }
+.pt-2 { padding-top: 0.5rem; }
+.pt-2.5 { padding-top: 0.625rem; }
+.pt-3 { padding-top: 0.75rem; }
+.pb-1 { padding-bottom: 0.25rem; }
+.pb-2 { padding-bottom: 0.5rem; }
+.pb-2.5 { padding-bottom: 0.625rem; }
+.pb-3 { padding-bottom: 0.75rem; }
+.pb-24 { padding-bottom: 6rem; }
+.pl-1 { padding-left: 0.25rem; }
+.pr-0.5 { padding-right: 0.125rem; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.mt-0.5 { margin-top: 0.125rem; }
+.mt-1 { margin-top: 0.25rem; }
+.mt-1.5 { margin-top: 0.375rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-2.5 { margin-top: 0.625rem; }
+.mb-0.5 { margin-bottom: 0.125rem; }
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-1.5 { margin-bottom: 0.375rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-2.5 { margin-bottom: 0.625rem; }
+.mb-3 { margin-bottom: 0.75rem; }
+.mb-3.5 { margin-bottom: 0.875rem; }
+.mr-1 { margin-right: 0.25rem; }
+/ ================= 6. 타이포그래피 & 텍스트 스타일 ================= /
+.font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+.text-[9px] { font-size: 9px; }
+.text-[10px] { font-size: 10px; }
+.text-[11px] { font-size: 11px; }
+.text-xs { font-size: 0.75rem; line-height: 1rem; }
+.text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+.text-base { font-size: 1rem; line-height: 1.5rem; }
+.text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+.text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+.text-2xl { font-size: 1.5rem; line-height: 2rem; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+.font-black { font-weight: 900; }
+.leading-none { line-height: 1; }
+.leading-relaxed { line-height: 1.625; }
+.tracking-tight { letter-spacing: -0.025em; }
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.line-through { text-decoration-line: line-through; }
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.break-all { word-break: break-all; }
+.whitespace-nowrap { white-space: nowrap; }
+.line-clamp-2 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+/ 텍스트 컬러 /
+.text-white { color: #ffffff; }
+.text-slate-200 { color: #e2e8f0; }
+.text-slate-300 { color: #cbd5e1; }
+.text-slate-400 { color: #94a3b8; }
+.text-slate-500 { color: #64748b; }
+.text-slate-600 { color: #475569; }
+.text-slate-700 { color: #334155; }
+.text-slate-800 { color: #1e293b; }
+.text-slate-900 { color: #0f172a; }
+.text-indigo-100 { color: #e0e7ff; }
+.text-indigo-200 { color: #c7d2fe; }
+.text-indigo-300 { color: #a5b4fc; }
+.text-indigo-600 { color: #4f46e5; }
+.text-indigo-700 { color: #4338ca; }
+.text-indigo-900 { color: #312e81; }
+.text-emerald-200 { color: #a7f3d0; }
+.text-emerald-300 { color: #6ee7b7; }
+.text-emerald-400 { color: #34d399; }
+.text-emerald-600 { color: #059669; }
+.text-emerald-700 { color: #047857; }
+.text-emerald-800 { color: #065f46; }
+.text-amber-200 { color: #fde68a; }
+.text-amber-300 { color: #fcd34d; }
+.text-amber-600 { color: #d97706; }
+.text-amber-700 { color: #b45309; }
+.text-rose-500 { color: #f43f5e; }
+.text-rose-600 { color: #e11d48; }
+.text-rose-800 { color: #9f1239; }
+.text-pink-600 { color: #db2777; }
+.text-pink-700 { color: #be185d; }
+.text-blue-500 { color: #3b82f6; }
+.text-blue-600 { color: #2563eb; }
+.text-purple-600 { color: #9333ea; }
+.text-teal-600 { color: #0d9488; }
+/ ================= 7. 배경색 & 그라데이션 ================= /
+.bg-cover { background-size: cover; }
+.bg-center { background-position: center; }
+.bg-no-repeat { background-repeat: no-repeat; }
+.bg-white { background-color: #ffffff; }
+.bg-white/5 { background-color: rgba(255, 255, 255, 0.05); }
+.bg-white/10 { background-color: rgba(255, 255, 255, 0.10); }
+.bg-white/20 { background-color: rgba(255, 255, 255, 0.20); }
+.bg-white/80 { background-color: rgba(255, 255, 255, 0.80); }
+.bg-white/90 { background-color: rgba(255, 255, 255, 0.90); }
+.bg-black/40 { background-color: rgba(0, 0, 0, 0.40); }
+.bg-slate-50 { background-color: #f8fafc; }
+.bg-slate-50/70 { background-color: rgba(248, 250, 252, 0.70); }
+.bg-slate-100 { background-color: #f1f5f9; }
+.bg-slate-100/90 { background-color: rgba(241, 245, 249, 0.90); }
+.bg-slate-200 { background-color: #e2e8f0; }
+.bg-slate-300 { background-color: #cbd5e1; }
+.bg-slate-400 { background-color: #94a3b8; }
+.bg-slate-800 { background-color: #1e293b; }
+.bg-slate-900 { background-color: #0f172a; }
+.bg-slate-900/50 { background-color: rgba(15, 23, 42, 0.50); }
+.bg-slate-900/95 { background-color: rgba(15, 23, 42, 0.95); }
+.bg-indigo-50 { background-color: #eef2ff; }
+.bg-indigo-50/70 { background-color: rgba(238, 242, 255, 0.70); }
+.bg-indigo-100 { background-color: #e0e7ff; }
+.bg-indigo-400 { background-color: #818cf8; }
+.bg-indigo-500 { background-color: #6366f1; }
+.bg-indigo-600 { background-color: #4f46e5; }
+.bg-indigo-900/40 { background-color: rgba(49, 46, 129, 0.40); }
+.bg-emerald-50 { background-color: #ecfdf5; }
+.bg-emerald-400 { background-color: #34d399; }
+.bg-emerald-500 { background-color: #10b981; }
+.bg-emerald-600 { background-color: #059669; }
+.bg-amber-50 { background-color: #fffbeb; }
+.bg-amber-400 { background-color: #fbbf24; }
+.bg-rose-50 { background-color: #fff1f2; }
+.bg-rose-100 { background-color: #ffe4e6; }
+.bg-pink-50 { background-color: #fdf2f8; }
+.bg-pink-50/60 { background-color: rgba(253, 242, 248, 0.60); }
+.bg-pink-600 { background-color: #db2777; }
+.bg-blue-50 { background-color: #eff6ff; }
+.bg-purple-50 { background-color: #faf5ff; }
+.bg-teal-50 { background-color: #f0fdfa; }
+/ 그라데이션 조합 /
+.bg-gradient-to-br.from-slate-900.via-indigo-950.to-slate-900 { background-image: linear-gradient(to bottom right, #0f172a, #1e1b4b, #0f172a); }
+.bg-gradient-to-br.from-indigo-600.to-violet-600 { background-image: linear-gradient(to bottom right, #4f46e5, #7c3aed); }
+.bg-gradient-to-b.from-slate-900/55.via-slate-900/40.to-slate-900/65 { background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.55), rgba(15, 23, 42, 0.40), rgba(15, 23, 42, 0.65)); }
+.bg-gradient-to-t.from-slate-900/60.via-transparent.to-transparent { background-image: linear-gradient(to top, rgba(15, 23, 42, 0.60), transparent, transparent); }
+.bg-gradient-to-r.from-rose-100.to-amber-100 { background-image: linear-gradient(to right, #ffe4e6, #fef3c7); }
+.bg-gradient-to-r.from-emerald-100.to-teal-100 { background-image: linear-gradient(to right, #d1fae5, #ccfbf1); }
+.bg-gradient-to-r.from-indigo-200.to-purple-200 { background-image: linear-gradient(to right, #c7d2fe, #e9d5ff); }
+/ ================= 8. 테두리(Border / Rounded / Ring) ================= /
+.border { border-width: 1px; }
+.border-2 { border-width: 2px; }
+.border-t { border-top-width: 1px; }
+.border-b { border-bottom-width: 1px; }
+.border-slate-100 { border-color: #f1f5f9; }
+.border-slate-200 { border-color: #e2e8f0; }
+.border-slate-200/80 { border-color: rgba(226, 232, 240, 0.80); }
+.border-slate-300 { border-color: #cbd5e1; }
+.border-indigo-100 { border-color: #e0e7ff; }
+.border-indigo-200 { border-color: #c7d2fe; }
+.border-indigo-300 { border-color: #a5b4fc; }
+.border-indigo-400 { border-color: #818cf8; }
+.border-indigo-500 { border-color: #6366f1; }
+.border-emerald-200 { border-color: #a7f3d0; }
+.border-emerald-500 { border-color: #10b981; }
+.border-amber-200 { border-color: #fde68a; }
+.border-rose-200 { border-color: #fecdd3; }
+.border-pink-100 { border-color: #fce7f3; }
+.border-pink-200 { border-color: #fbcfe8; }
+.border-pink-300 { border-color: #f9a8d4; }
+.border-white/10 { border-color: rgba(255, 255, 255, 0.10); }
+.border-white/15 { border-color: rgba(255, 255, 255, 0.15); }
+.border-white/50 { border-color: rgba(255, 255, 255, 0.50); }
+.border-white/80 { border-color: rgba(255, 255, 255, 0.80); }
+.rounded-md { border-radius: 0.375rem; }
+.rounded-lg { border-radius: 0.5rem; }
+.rounded-xl { border-radius: 0.75rem; }
+.rounded-2xl { border-radius: 1rem; }
+.rounded-t-3xl { border-top-left-radius: 1.5rem; border-top-right-radius: 1.5rem; }
+.rounded-full { border-radius: 9999px; }
+.ring-1 { box-shadow: 0 0 0 1px var(--ring-color, #a5b4fc); }
+.ring-2 { box-shadow: 0 0 0 2px var(--ring-color, #e0e7ff); }
+.ring-indigo-100 { --ring-color: #e0e7ff; }
+.ring-indigo-300 { --ring-color: #a5b4fc; }
+.ring-indigo-400 { --ring-color: #818cf8; }
+/ ================= 9. 그림자 / 투명도 / 필터 / 트랜지션 ================= /
+.shadow-2xs { box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04); }
+.shadow-xs { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+.shadow-sm { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1); }
+.shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); }
+.shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); }
+.shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+.opacity-0 { opacity: 0; }
+.opacity-30 { opacity: 0.30; }
+.opacity-35 { opacity: 0.35; }
+.opacity-100 { opacity: 1; }
+.backdrop-blur-[1px] { backdrop-filter: blur(1px); -webkit-backdrop-filter: blur(1px); }
+.backdrop-blur-xs { backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+.drop-shadow-2xs { filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.15)); }
+.drop-shadow-xs { filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25)); }
+.transition { transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); }
+.transition-all { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+.transition-opacity { transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+.duration-200 { transition-duration: 200ms; }
+.duration-300 { transition-duration: 300ms; }
+/ ================= 10. 인터랙션 / 포커스 / 호버 / 액티브 ================= /
+.cursor-pointer { cursor: pointer; }
+.pointer-events-none { pointer-events: none; }
+.select-none { user-select: none; -webkit-user-select: none; }
+.select-text { user-select: text; -webkit-user-select: text; }
+.select-all { user-select: all; -webkit-user-select: all; }
+.resize-none { resize: none; }
+.accent-indigo-600 { accent-color: #4f46e5; }
+.focus:outline-none:focus { outline: none; }
+.focus:bg-white:focus { background-color: #ffffff; }
+.focus:border-indigo-500:focus { border-color: #6366f1; }
+.focus:ring-2:focus { box-shadow: 0 0 0 2px #e0e7ff; }
+.hover:underline:hover { text-decoration: underline; }
+.hover:bg-slate-100:hover { background-color: #f1f5f9; }
+.hover:bg-slate-100/80:hover { background-color: rgba(241, 245, 249, 0.80); }
+.hover:bg-slate-200:hover { background-color: #e2e8f0; }
+.hover:bg-slate-300:hover { background-color: #cbd5e1; }
+.hover:bg-slate-800:hover { background-color: #1e293b; }
+.hover:bg-slate-900:hover { background-color: #0f172a; }
+.hover:bg-indigo-50:hover { background-color: #eef2ff; }
+.hover:bg-indigo-100:hover { background-color: #e0e7ff; }
+.hover:bg-indigo-700:hover { background-color: #4338ca; }
+.hover:bg-emerald-100:hover { background-color: #d1fae5; }
+.hover:bg-emerald-700:hover { background-color: #047857; }
+.hover:bg-pink-50:hover { background-color: #fdf2f8; }
+.hover:bg-pink-100:hover { background-color: #fce7f3; }
+.hover:bg-pink-700:hover { background-color: #be185d; }
+.hover:bg-rose-100:hover { background-color: #ffe4e6; }
+.hover:bg-rose-200:hover { background-color: #fecdd3; }
+.hover:bg-white/20:hover { background-color: rgba(255, 255, 255, 0.20); }
+.hover:bg-white/30:hover { background-color: rgba(255, 255, 255, 0.30); }
+.hover:bg-black/60:hover { background-color: rgba(0, 0, 0, 0.60); }
+.hover:text-indigo-600:hover { color: #4f46e5; }
+.hover:text-indigo-700:hover { color: #4338ca; }
+.hover:text-slate-600:hover { color: #475569; }
+.hover:text-slate-700:hover { color: #334155; }
+.hover:border-slate-300:hover { border-color: #cbd5e1; }
+.hover:border-indigo-400:hover { border-color: #818cf8; }
+.hover:scale-105:hover { transform: scale(1.05); }
+.active:scale-90:active { transform: scale(0.90); }
+.active:scale-95:active { transform: scale(0.95); }
+.active:scale-[0.98]:active { transform: scale(0.98); }
+.active:bg-slate-200:active { background-color: #e2e8f0; }
+.active:bg-slate-200/80:active { background-color: rgba(226, 232, 240, 0.80); }
+@media (min-width: 640px) { .sm:border-x { border-left-width: 1px; border-right-width: 1px; } .sm:border-slate-800 { border-color: #1e293b; } }
+/ ================= 11. [알람 단계] 추가 스타일 및 벨 애니메이션 ================= /
+@keyframes bellRing { 0%, 100% { transform: rotate(0deg) scale(1); } 15% { transform: rotate(16deg) scale(1.08); } 30% { transform: rotate(-14deg) scale(1.08); } 45% { transform: rotate(12deg) scale(1.05); } 60% { transform: rotate(-10deg) scale(1.05); } 75% { transform: rotate(6deg) scale(1.02); } }
+.bell-ringing { animation: bellRing 0.9s ease-in-out infinite; }
+@keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.45); } 50% { box-shadow: 0 0 0 12px rgba(245, 158, 11, 0); } }
+.alarm-pulse { animation: pulseGlow 1.6s infinite; }
+.w-16 { width: 4rem; }
+.bg-amber-50/80 { background-color: rgba(255, 251, 235, 0.80); }
+.bg-black/20 { background-color: rgba(0, 0, 0, 0.20); }
+.text-amber-100 { color: #fef3c7; }
+.bg-amber-100 { background-color: #fef3c7; }
+.bg-amber-500 { background-color: #f59e0b; }
+.bg-amber-600 { background-color: #d97706; }
+.hover:bg-amber-100:hover { background-color: #fef3c7; }
+.hover:bg-amber-600:hover { background-color: #d97706; }
+.hover:bg-amber-700:hover { background-color: #b45309; }
+.text-amber-800 { color: #92400e; }
+.text-amber-900 { color: #78350f; }
+.border-amber-300 { border-color: #fcd34d; }
+.bg-violet-50 { background-color: #f5f3ff; }
+.bg-violet-600 { background-color: #7c3aed; }
+.text-violet-600 { color: #7c3aed; }
+.text-violet-700 { color: #6d28d9; }
+.border-violet-200 { border-color: #ddd6fe; }
+.hover:bg-violet-100:hover { background-color: #ede9fe; }
+.bg-gradient-to-br.from-amber-500.to-rose-500 { background-image: linear-gradient(to bottom right, #f59e0b, #f43f5e); }
+/ ================= 12. [저장 경로 및 APK 호환 단계] 추가 스타일 ================= /
+.bg-cyan-50 { background-color: #ecfeff; }
+.bg-cyan-100 { background-color: #cffafe; }
+.bg-cyan-600 { background-color: #0891b2; }
+.bg-cyan-700 { background-color: #0e7490; }
+.hover:bg-cyan-100:hover { background-color: #cffafe; }
+.hover:bg-cyan-700:hover { background-color: #0e7490; }
+.text-cyan-700 { color: #0e7490; }
+.text-cyan-800 { color: #155e75; }
+.text-cyan-900 { color: #164e63; }
+.border-cyan-200 { border-color: #a5f3fc; }
+.border-cyan-300 { border-color: #67e8f9; }
+.col-span-2 { grid-column: span 2 / span 2; }
+.border-slate-700 { border-color: #334155; }
+.bg-slate-900/60 { background-color: rgba(15, 23, 42, 0.60); }
+</style>
+</head>
+<body class="flex justify-center items-start min-h-screen bg-slate-900 text-slate-800 select-none">
+<!-- 스마트폰 앱 컨테이너 (최대 폭 430px, 모바일 기기에서는 전체 화면) -->
+<div id="app-shell" class="w-full max-w-[430px] h-[100dvh] bg-slate-50 flex flex-col shadow-2xl relative overflow-hidden sm:border-x sm:border-slate-800">
+<!-- [4단계] 전체 앱 배경 이미지 레이어 & 투명도/어둡기 조절 오버레이 -->
+<div id="app-bg-image-layer" class="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-300 z-0 hidden"></div>
+<div id="app-bg-overlay-layer" class="pointer-events-none absolute inset-0 transition-all duration-200 z-0 hidden"></div>
+<!-- ================= 상단 헤더 & 뷰 전환 탭 ================= -->
+<header id="app-header" class="relative bg-white border-b border-slate-200 px-4 pt-3 pb-2.5 shrink-0 z-20 shadow-sm overflow-hidden transition-all">
+<!-- [4단계] 상단 헤더 배너 배경 이미지 레이어 -->
+<div id="header-bg-image-layer" class="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat z-0 hidden"></div>
+<div id="header-bg-overlay-layer" class="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-900/55 via-slate-900/40 to-slate-900/65 z-0 hidden"></div>
+<!-- 헤더 내부 콘텐츠 래퍼 -->
+<div class="relative z-10">
+<!-- [1단] 왼쪽: 아이콘 + '마이 플래너' 제목 (줄바꿈 방지) / 오른쪽: [📋 코드 복사], [샘플], [오늘] -->
+<div class="flex items-center justify-between gap-2 mb-1">
+<div class="flex items-center gap-2 min-w-0 shrink-0">
+<div class="w-8 h-8 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-sm shrink-0">
+<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+<path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+</svg>
+</div>
+<h1 id="header-app-title" class="text-base font-extrabold tracking-tight text-slate-900 leading-none whitespace-nowrap"> 마이 플래너 </h1>
+</div>
+<div class="flex items-center gap-1.5 shrink-0">
+<button id="btn-open-source-modal-top" onclick="openSourceCodeModal()" class="px-2.5 py-1.5 rounded-lg text-[11px] font-bold bg-slate-900 text-white hover:bg-slate-800 active:scale-95 transition whitespace-nowrap flex items-center gap-1 shadow-xs" title="현재 웹앱의 전체 HTML 소스코드를 모달창에서 보고 원클릭 복사합니다">
+<span>📋</span> <span>전체 코드 복사</span>
+</button>
+<button id="btn-sample-data" onclick="insertSampleData()" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 active:scale-95 transition whitespace-nowrap"> 샘플 </button>
+<button id="btn-today" onclick="goToToday()" class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-indigo-50 text-indigo-600 hover:bg-indigo-100 active:scale-95 transition whitespace-nowrap"> 오늘 </button>
+</div>
+</div>
+<!-- [저장소 경로 안내] 한 줄 전체 사용 + 길면 말줄임표(truncate) 처리 -->
+<p id="header-subtitle" class="w-full text-[11px] text-slate-400 font-medium truncate mb-2 px-1">저장소: 내부저장소 (마이플래너_백업데이터)</p>
+<!-- [2단 기능 버튼 바] 4열 그리드 (글씨 세로 줄바꿈 절대 방지: whitespace-nowrap) -->
+<div class="grid grid-cols-4 gap-1.5 mb-2">
+<button id="btn-storage-settings" onclick="openStorageModal()" class="py-1.5 px-1 rounded-xl text-[11px] font-bold bg-cyan-50 text-cyan-700 border border-cyan-200 hover:bg-cyan-100 active:scale-95 transition flex items-center justify-center gap-1 whitespace-nowrap">
+<span>📁</span> <span>저장경로</span>
+</button>
+<button id="btn-alarm-settings" onclick="openAlarmSettingsModal()" class="py-1.5 px-1 rounded-xl text-[11px] font-bold bg-amber-50 text-amber-700 border border-amber-200 hover:bg-amber-100 active:scale-95 transition flex items-center justify-center gap-1 whitespace-nowrap">
+<span>🔔</span> <span id="header-alarm-btn-text">알람</span>
+</button>
+<button id="btn-theme-settings" onclick="openThemeModal()" class="py-1.5 px-1 rounded-xl text-[11px] font-bold bg-pink-50 text-pink-600 border border-pink-200 hover:bg-pink-100 active:scale-95 transition flex items-center justify-center gap-1 whitespace-nowrap">
+<span>🎨</span> <span>꾸미기</span>
+</button>
+<button id="btn-backup-restore" onclick="openBackupModal('backup')" class="py-1.5 px-1 rounded-xl text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 active:scale-95 transition flex items-center justify-center gap-1 whitespace-nowrap">
+<span>💾</span> <span>백업/복원</span>
+</button>
+</div>
+<!-- 날짜 네비게이션 컨트롤 -->
+<div class="flex items-center justify-between py-1 mb-2">
+<button id="btn-nav-prev" onclick="navigatePeriod(-1)" aria-label="이전 기간" class="w-9 h-9 rounded-full flex items-center justify-center text-slate-600 hover:bg-slate-100 active:bg-slate-200 transition">
+<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+<path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+</svg>
+</button>
+<div class="text-center">
+<h2 id="current-period-label" class="text-lg font-extrabold text-slate-900 tracking-tight">2026년 10월</h2>
+<p id="current-period-sublabel" class="text-[11px] text-slate-400 font-medium hidden"></p>
+</div>
+<button id="btn-nav-next" onclick="navigatePeriod(1)" aria-label="다음 기간" class="w-9 h-9 rounded-full flex items-center justify-center text-slate-600 hover:bg-slate-100 active:bg-slate-200 transition">
+<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+<path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+</button>
+</div>
+<!-- 상단 [년 / 월 / 주 / 일] 세그먼트 탭 버튼 -->
+<nav id="header-view-tabs" class="grid grid-cols-4 gap-1 bg-slate-100/90 p-1 rounded-xl backdrop-blur-xs" role="tablist">
+<button onclick="switchView('year')" id="tab-year" class="view-tab py-1.5 text-xs font-semibold rounded-lg transition-all text-slate-500"> 년 </button>
+<button onclick="switchView('month')" id="tab-month" class="view-tab py-1.5 text-xs font-bold rounded-lg transition-all bg-white text-indigo-600 shadow-sm"> 월 </button>
+<button onclick="switchView('week')" id="tab-week" class="view-tab py-1.5 text-xs font-semibold rounded-lg transition-all text-slate-500"> 주 </button>
+<button onclick="switchView('day')" id="tab-day" class="view-tab py-1.5 text-xs font-semibold rounded-lg transition-all text-slate-500"> 일 </button>
+</nav>
+</div>
+</header>
+<!-- ================= 메인 콘텐츠 영역 (스크롤 가능) ================= -->
+<main id="main-scroll-area" class="relative z-10 flex-1 overflow-y-auto no-scrollbar pb-24">
+<!-- [4단계] 달력 상단 감성 배너 영역 (설정 시 노출) -->
+<div id="calendar-top-banner-wrap" class="hidden px-3.5 pt-3">
+<div class="relative w-full h-28 rounded-2xl overflow-hidden shadow-sm border border-white/50 group">
+<img id="calendar-top-banner-img" src="" alt="상단 배너" class="w-full h-full object-cover">
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent flex items-end justify-between p-3">
+<span id="banner-caption-text" class="text-xs font-bold text-white drop-shadow-xs">나만의 플래너 배너</span>
+<button type="button" onclick="openThemeModal()" class="px-2 py-1 rounded-lg bg-black/40 text-white text-[10px] font-semibold backdrop-blur-xs hover:bg-black/60 transition"> 배너 변경 </button>
+</div>
+</div>
+</div>
+<!-- [1] 년(Year) 뷰 - 연간 달성률 대시보드 + 1~12월 그리드 -->
+<section id="view-year" class="hidden p-3.5 fade-in">
+<div class="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 rounded-2xl p-4 text-white shadow-md mb-3.5">
+<div class="flex items-center justify-between mb-2">
+<div>
+<p id="year-summary-subtitle" class="text-xs text-indigo-200 font-medium">2026년 전체 일정 흐름</p>
+<h3 class="text-base font-extrabold tracking-tight mt-0.5">연간 일정 달성률</h3>
+</div>
+<div class="text-right">
+<span id="year-progress-percent" class="text-2xl font-black text-emerald-400">0%</span>
+</div>
+</div>
+<div class="w-full h-2.5 bg-white/10 rounded-full overflow-hidden flex mb-3">
+<div id="year-bar-completed" class="h-full bg-emerald-400 transition-all duration-300" style="width: 0%"></div>
+<div id="year-bar-progress" class="h-full bg-indigo-400 transition-all duration-300" style="width: 0%"></div>
+<div id="year-bar-pending" class="h-full bg-amber-400 transition-all duration-300" style="width: 0%"></div>
+</div>
+<div class="grid grid-cols-4 gap-1.5 pt-2 border-t border-white/10 text-center">
+<div class="bg-white/5 rounded-xl py-1.5">
+<p class="text-[10px] text-slate-300">총 일정</p>
+<p id="year-count-total" class="text-xs font-bold text-white mt-0.5">0건</p>
+</div>
+<div class="bg-white/5 rounded-xl py-1.5">
+<p class="text-[10px] text-amber-200">대기</p>
+<p id="year-count-pending" class="text-xs font-bold text-amber-300 mt-0.5">0건</p>
+</div>
+<div class="bg-white/5 rounded-xl py-1.5">
+<p class="text-[10px] text-indigo-200">진행중</p>
+<p id="year-count-progress" class="text-xs font-bold text-indigo-300 mt-0.5">0건</p>
+</div>
+<div class="bg-white/5 rounded-xl py-1.5">
+<p class="text-[10px] text-emerald-200">완료</p>
+<p id="year-count-completed" class="text-xs font-bold text-emerald-300 mt-0.5">0건</p>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between px-1 mb-2">
+<span class="text-xs font-bold text-slate-800 drop-shadow-2xs">월별 진행 현황 (1월 ~ 12월)</span>
+<span class="text-[11px] text-slate-500">달을 터치하면 월간 달력으로 이동</span>
+</div>
+<div id="year-months-grid" class="grid grid-cols-2 gap-2.5"></div>
+</section>
+<!-- [2] 월(Month) 뷰 - 달력 + 선택된 날짜의 하단 일정 리스트 -->
+<section id="view-month" class="fade-in">
+<div class="glass-panel bg-white border-b border-slate-200 px-3 pt-2 pb-3 shadow-xs">
+<div class="grid grid-cols-7 text-center mb-1">
+<div class="text-[11px] font-bold text-rose-500 py-1">일</div>
+<div class="text-[11px] font-bold text-slate-500 py-1">월</div>
+<div class="text-[11px] font-bold text-slate-500 py-1">화</div>
+<div class="text-[11px] font-bold text-slate-500 py-1">수</div>
+<div class="text-[11px] font-bold text-slate-500 py-1">목</div>
+<div class="text-[11px] font-bold text-slate-500 py-1">금</div>
+<div class="text-[11px] font-bold text-blue-500 py-1">토</div>
+</div>
+<div id="month-calendar-grid" class="grid grid-cols-7 gap-1 text-center"></div>
+<div class="flex items-center justify-between mt-2.5 pt-2 border-t border-slate-100 text-[11px] text-slate-500 px-1">
+<button type="button" onclick="triggerDateStickerUpload()" class="flex items-center gap-1 text-[11px] font-bold text-pink-600 bg-pink-50 hover:bg-pink-100 px-2.5 py-1 rounded-lg transition active:scale-95">
+<span>✨ 선택 날짜에 사진/스티커 넣기</span>
+</button>
+<div class="flex items-center gap-2.5">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-amber-400 inline-block"></span>대기</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-indigo-500 inline-block"></span>진행중</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>완료</span>
+</div>
+</div>
+</div>
+<div class="p-3.5">
+<div class="flex items-center justify-between mb-2.5">
+<div class="flex items-center gap-2">
+<div id="month-selected-date-sticker-Slot" class="hidden"></div>
+<h3 id="month-selected-date-title" class="text-sm font-extrabold text-slate-900">2026년 10월 19일 (월)</h3>
+<span id="month-selected-date-badge" class="px-2 py-0.5 text-[11px] font-semibold rounded-full bg-indigo-50 text-indigo-600">0개 일정</span>
+</div>
+<button onclick="switchView('day')" class="text-xs font-semibold text-indigo-600 hover:text-indigo-700 flex items-center gap-0.5">
+일별 상세 보기
+<svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+<path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+</button>
+</div>
+<form onsubmit="handleQuickAdd(event)" class="flex gap-1.5 mb-3">
+<input type="text" id="quick-add-input" placeholder="선택한 날짜에 빠른 일정 추가..." class="glass-panel flex-1 bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 shadow-xs">
+<button type="submit" class="px-3.5 py-2.5 bg-indigo-600 text-white rounded-xl text-xs font-bold shrink-0 hover:bg-indigo-700 active:scale-95 transition shadow-xs"> 추가 </button>
+</form>
+<div id="month-day-schedule-list" class="space-y-2"></div>
+</div>
+</section>
+<!-- [3] 주(Week) 뷰 - 월~일요일 주간 타임라인 및 카드 리스트 -->
+<section id="view-week" class="hidden fade-in">
+<div class="glass-panel bg-white border-b border-slate-200 px-3.5 pt-2.5 pb-3 shadow-xs sticky top-0 z-10">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-2">
+<span class="text-xs font-extrabold text-slate-800">주간 달성 현황</span>
+<span id="week-summary-counts" class="text-[11px] font-medium text-slate-500">총 0건 · 완료 0건 · 진행 0건</span>
+</div>
+<span id="week-progress-percent" class="text-xs font-extrabold text-indigo-600">0%</span>
+</div>
+<div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden flex mb-3">
+<div id="week-bar-completed" class="h-full bg-emerald-500 transition-all duration-300" style="width: 0%"></div>
+<div id="week-bar-progress" class="h-full bg-indigo-500 transition-all duration-300" style="width: 0%"></div>
+<div id="week-bar-pending" class="h-full bg-amber-400 transition-all duration-300" style="width: 0%"></div>
+</div>
+<div id="week-day-strip" class="grid grid-cols-7 gap-1 text-center"></div>
+</div>
+<div id="week-timeline-list" class="p-3.5 space-y-3"></div>
+</section>
+<!-- [4] 일(Day) 뷰 - 선택된 날짜의 집중 일정 관리 및 진행률 -->
+<section id="view-day" class="hidden p-3.5 fade-in">
+<div id="day-hero-card" class="relative bg-gradient-to-br from-indigo-600 to-violet-600 rounded-2xl p-4 text-white shadow-md mb-3.5 overflow-hidden">
+<div id="day-hero-custom-bg" class="pointer-events-none absolute inset-0 bg-cover bg-center opacity-35 hidden"></div>
+<div class="relative z-10">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2.5">
+<div id="day-view-sticker-thumb" class="hidden w-11 h-11 rounded-xl overflow-hidden border-2 border-white/80 shadow-sm shrink-0 bg-white"></div>
+<div>
+<p id="day-view-date-sub" class="text-xs text-indigo-100 font-medium">2026년 10월 19일 (월)</p>
+<h3 class="text-lg font-extrabold tracking-tight mt-0.5">오늘의 달성률</h3>
+</div>
+</div>
+<div class="text-right">
+<span id="day-progress-percent" class="text-2xl font-black">0%</span>
+<button type="button" onclick="triggerDateStickerUpload()" class="block text-[10px] font-bold bg-white/20 hover:bg-white/30 px-2 py-0.5 rounded-md mt-1 transition"> 날짜 사진/스티커 </button>
+</div>
+</div>
+<div class="w-full h-2 bg-indigo-900/40 rounded-full overflow-hidden mb-3">
+<div id="day-progress-bar" class="h-full bg-emerald-400 rounded-full transition-all duration-300" style="width: 0%"></div>
+</div>
+<div class="grid grid-cols-3 gap-2

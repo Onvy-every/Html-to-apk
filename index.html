@@ -8,6 +8,7 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>마이 플래너</title>
+  <link rel="manifest" href="./manifest.json">
   <!-- Tailwind CSS & 자체 오프라인 Fallback 스타일 동시 탑재 -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -955,5 +956,9 @@
     applyTheme();
     render();
   </script>
+  if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js');
+}
+
 </body>
 </html>

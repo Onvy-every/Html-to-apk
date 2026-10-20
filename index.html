@@ -1,1 +1,703 @@
-<!DOCTYPE html> <html lang="ko"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <meta name="theme-color" content="#4f46e5"> <meta name="apple-mobile-web-app-capable" content="yes"> <meta name="mobile-web-app-capable" content="yes"> <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> <link rel="manifest" href="./manifest.json"> <title>마이 플래너</title> <script src="https://cdn.tailwindcss.com"></script> <style> * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; } body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif; background-color: #f8fafc; color: #1e293b; overflow-x: hidden; user-select: none; } svg { width: 20px; height: 20px; display: inline-block; vertical-align: middle; flex-shrink: 0; } .app-shell { max-width: 480px; margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column; position: relative; background: rgba(255, 255, 255, 0.95); box-shadow: 0 0 25px rgba(0,0,0,0.08); padding-bottom: 30px; } .bg-layer { position: fixed; inset: 0; z-index: -1; background-size: cover; background-position: center; transition: opacity 0.3s; } .header-box { padding: 14px 16px 10px; border-bottom: 1px solid #e2e8f0; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); } .top-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; } .brand { display: flex; align-items: center; gap: 8px; min-width: 0; } .brand-icon { width: 34px; height: 34px; border-radius: 10px; background: #4f46e5; color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; } .brand-title { font-size: 18px; font-weight: 800; color: #0f172a; white-space: nowrap; } .path-text { font-size: 11px; color: #64748b; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 220px; } .mini-btns { display: flex; gap: 6px; flex-shrink: 0; } .btn-mini { padding: 6px 10px; border-radius: 8px; font-size: 12px; font-weight: 700; border: none; cursor: pointer; white-space: nowrap; } .menu-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 10px; } .menu-chip { display: flex; align-items: center; justify-content: center; gap: 4px; padding: 8px 4px; border-radius: 10px; font-size: 12px; font-weight: 700; border: 1px solid transparent; cursor: pointer; white-space: nowrap; } /* ★ 완전히 분리되어 선명하게 나오는 상단 사진 배너 박스 ★ */ .banner-container { margin: 12px 16px 4px; border-radius: 16px; overflow: hidden; position: relative; background-size: cover; background-position: center; border: 2px dashed #cbd5e1; background-color: #f1f5f9; display: flex; align-items: center; justify-content: center; cursor: pointer; min-height: 120px; box-shadow: 0 3px 10px rgba(0,0,0,0.06); } .banner-container.has-image { border: none; } .banner-placeholder { font-size: 13px; font-weight: 700; color: #64748b; display: flex; align-items: center; gap: 6px; padding: 20px; text-align: center; } .banner-tag { position: absolute; right: 10px; bottom: 10px; background: rgba(15,23,42,0.7); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; backdrop-filter: blur(4px); } .nav-bar { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px 8px; } .nav-title { font-size: 19px; font-weight: 800; color: #0f172a; } .nav-arrow { width: 34px; height: 34px; border-radius: 50%; border: none; background: #f1f5f9; color: #334155; font-size: 18px; font-weight: bold; display: flex; align-items: center; justify-content: center; cursor: pointer; } .view-tabs { display: grid; grid-template-columns: repeat(4, 1fr); background: #f1f5f9; padding: 4px; border-radius: 12px; margin: 0 16px 10px; } .view-tab { padding: 7px 0; text-align: center; font-size: 13px; font-weight: 700; border-radius: 9px; border: none; background: transparent; color: #64748b; cursor: pointer; } .view-tab.active { background: #ffffff; color: #4f46e5; box-shadow: 0 1px 3px rgba(0,0,0,0.1); } .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; padding: 0 12px; } .weekday { text-align: center; font-size: 12px; font-weight: 700; padding: 6px 0; color: #64748b; } .day-cell { min-height: 54px; border-radius: 12px; padding: 4px 2px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; cursor: pointer; position: relative; border: 2px solid transparent; background-size: cover; background-position: center; overflow: hidden; } .day-cell.selected { border-color: #4f46e5; background-color: #eef2ff; } .day-cell.today .day-num { background: #4f46e5; color: #fff !important; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; } .day-num { font-size: 13px; font-weight: 700; z-index: 1; text-shadow: 0 0 4px rgba(255,255,255,0.9); } .dot-row { display: flex; gap: 3px; margin-top: 4px; z-index: 1; flex-wrap: wrap; justify-content: center; } .dot { width: 6px; height: 6px; border-radius: 50%; } .fab { position: fixed; right: 20px; bottom: 56px; width: 54px; height: 54px; border-radius: 50%; background: #4f46e5; color: #fff; border: none; font-size: 28px; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 16px rgba(79,70,229,0.4); cursor: pointer; z-index: 30; } .modal-backdrop { position: fixed; inset: 0; background: rgba(15,23,42,0.55); display: none; align-items: center; justify-content: center; padding: 16px; z-index: 50; } .modal-backdrop.open { display: flex; } .modal-card { background: #fff; width: 100%; max-width: 420px; border-radius: 20px; padding: 20px; max-height: 86vh; overflow-y: auto; box-shadow: 0 15px 35px rgba(0,0,0,0.2); } .input-box { width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 14px; margin-top: 4px; margin-bottom: 10px; } .btn-primary { background: #4f46e5; color: #fff; border: none; padding: 10px 14px; border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer; width: 100%; } .btn-sub { background: #f1f5f9; color: #334155; border: none; padding: 10px 14px; border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer; } </style> </head> <body> <div id="bgLayer" class="bg-layer"></div> <div class="app-shell" id="appShell"> <!-- 상단 헤더 --> <header class="header-box"> <div class="top-row"> <div class="brand"> <div class="brand-icon">📅</div> <div style="min-width:0;"> <div class="brand-title">마이 플래너</div> <div class="path-text" id="pathDisplay">저장소: 내부저장소 (자동저장됨)</div> </div> </div> <div class="mini-btns"> <button class="btn-mini" style="background:#f1f5f9; color:#475569;" onclick="loadSampleData()">샘플</button> <button class="btn-mini" style="background:#eef2ff; color:#4f46e5;" onclick="goToday()">오늘</button> </div> </div> <div class="menu-grid"> <button class="menu-chip" style="background:#ecfeff; color:#0e7490; border-color:#a5f3fc;" onclick="openModal('pathModal')">📁 저장경로</button> <button class="menu-chip" style="background:#fefce8; color:#a16207; border-color:#fde047;" onclick="openModal('alarmModal')">🔔 알람</button> <button class="menu-chip" style="background:#fdf2f8; color:#be185d; border-color:#fbcfe8;" onclick="openModal('themeModal')">🎨 꾸미기</button> <button class="menu-chip" style="background:#f0fdf4; color:#15803d; border-color:#bbf7d0;" onclick="openBackupModal()">💾 백업/복원</button> </div> </header> <!-- ★ 완전히 분리된 선명한 상단 포토 배너 영역 ★ --> <div id="bannerContainer" class="banner-container" onclick="document.getElementById('hiddenBannerInput').click()"> <div id="bannerPlaceholder" class="banner-placeholder"> 🖼️ 여기를 눌러 선명한 상단 배너 사진을 넣어보세요! </div> <div id="bannerTag" class="banner-tag" style="display:none;">📷 사진 변경하기</div> </div> <!-- 날짜 이동 네비게이션 --> <div class="nav-bar"> <button class="nav-arrow" onclick="movePeriod(-1)">‹</button> <div class="nav-title" id="periodTitle">2026년 10월</div> <button class="nav-arrow" onclick="movePeriod(1)">›</button> </div> <!-- 년 / 월 / 주 / 일 탭 --> <div class="view-tabs"> <button class="view-tab" id="tab-year" onclick="setViewMode('year')">년</button> <button class="view-tab active" id="tab-month" onclick="setViewMode('month')">월</button> <button class="view-tab" id="tab-week" onclick="setViewMode('week')">주</button> <button class="view-tab" id="tab-day" onclick="setViewMode('day')">일</button> </div> <!-- 메인 뷰 영역 --> <main id="mainView" style="flex:1; padding-bottom: 90px;"></main> <!-- 플로팅 일정 추가 버튼 --> <button class="fab" onclick="openTaskModal()" title="일정 추가">+</button> <!-- 하단 요약 상태바 --> <footer style="position:fixed; bottom:0; left:0; right:0; max-width:480px; margin:0 auto; background:rgba(255,255,255,0.95); border-top:1px solid #e2e8f0; padding:8px 14px; display:flex; justify-content:space-between; align-items:center; font-size:12px; z-index:20;"> <div id="footerSummary" style="font-weight:700; color:#334155;">🟢 전체 일정 0개 (완료 0개)</div> <div style="display:flex; gap:8px; font-weight:700;"> <span style="color:#f59e0b;">● 대기</span> <span style="color:#3b82f6;">● 진행</span> <span style="color:#10b981;">● 완료</span> </div> </footer> </div> <!-- 숨겨진 파일 업로더들 --> <input type="file" id="hiddenBannerInput" accept="image/*" style="display:none" onchange="uploadThemeImage(event, 'headerBg')"> <input type="file" id="dayStickerInput" accept="image/*" style="display:none" onchange="handleDayStickerUpload(event)"> <input type="file" id="restoreFileInput" accept=".txt,.json" style="display:none" onchange="handleFileRestore(event)"> <!-- 1. 일정 추가/수정 모달 --> <div id="taskModal" class="modal-backdrop"> <div class="modal-card"> <h3 style="margin:0 0 12px; font-size:17px; font-weight:800;" id="taskModalTitle">일정 추가</h3> <input type="hidden" id="editTaskId"> <label style="font-size:12px; font-weight:700;">날짜</label> <input type="date" id="taskDateInput" class="input-box"> <label style="font-size:12px; font-weight:700;">시간</label> <input type="time" id="taskTimeInput" class="input-box" value="09:00"> <label style="font-size:12px; font-weight:700;">일정 내용</label> <input type="text" id="taskTitleInput" class="input-box" placeholder="예: 프로젝트 회의, 병원 예약"> <label style="font-size:12px; font-weight:700;">진행 상태</label> <select id="taskStatusInput" class="input-box"> <option value="todo">🟡 대기 (예정)</option> <option value="doing">🔵 진행중</option> <option value="done">🟢 완료</option> </select> <label style="font-size:12px; font-weight:700;">알람 설정</label> <select id="taskAlarmInput" class="input-box"> <option value="none">알람 없음</option> <option value="0">정각에 알림</option> <option value="10">10분 전 알림</option> <option value="30">30분 전 알림</option> <option value="60">1시간 전 알림</option> </select> <label style="font-size:12px; font-weight:700;">메모 (선택)</label> <textarea id="taskMemoInput" class="input-box" rows="2" placeholder="상세 메모"></textarea> <div style="display:flex; gap:8px; margin-top:8px;"> <button class="btn-sub" style="flex:1;" onclick="closeModal('taskModal')">취소</button> <button class="btn-primary" style="flex:1;" onclick="saveTask()">저장하기</button> </div> </div> </div> <!-- 2. 저장경로 및 파일 저장 모달 --> <div id="pathModal" class="modal-backdrop"> <div class="modal-card"> <h3 style="margin:0 0 8px; font-size:17px; font-weight:800;">📁 데이터 저장 경로 및 파일 관리</h3> <p style="font-size:12px; color:#64748b; margin-bottom:12px;">원하는 파일 이름을 지정하여 내 스마트폰 폴더에 저장하거나 불러옵니다.</p> <label style="font-size:12px; font-weight:700;">저장할 기본 파일명</label> <input type="text" id="customFileName" class="input-box" value="마이플래너_백업데이터" onchange="updatePathName()"> <div style="display:flex; flex-direction:column; gap:8px; margin-top:6px;"> <button class="btn-primary" onclick="saveToFileSystem('txt')">📄 자연어 텍스트(.txt)로 저장</button> <button class="btn-primary" style="background:#0e7490;" onclick="saveToFileSystem('json')">📦 배경/배너/스티커 포함 전체(.json) 저장</button> <button class="btn-sub" onclick="document.getElementById('restoreFileInput').click()">📂 백업 파일(.txt/.json) 불러오기</button> </div> <button class="btn-sub" style="width:100%; margin-top:12px;" onclick="closeModal('pathModal')">닫기</button> </div> </div> <!-- 3. 알람 설정 및 테스트 모달 --> <div id="alarmModal" class="modal-backdrop"> <div class="modal-card"> <h3 style="margin:0 0 8px; font-size:17px; font-weight:800;">🔔 오프라인 알람 & 폰 캘린더 연동</h3> <p style="font-size:12px; color:#64748b; margin-bottom:12px;">앱이 켜져 있을 때는 자체 알림음과 진동이 울리며, 각 일정 옆의 <b>[📲폰알람]</b> 버튼을 누르면 스마트폰 기본 캘린더 알람으로 등록됩니다.</p> <div style="display:flex; flex-direction:column; gap:8px;"> <button class="btn-primary" onclick="requestAlarmPermission()">1. 브라우저 알림 권한 허용하기</button> <button class="btn-primary" style="background:#d97706;" onclick="testAlarmIn5Sec()">2. 5초 뒤 알람 소리/진동 테스트</button> </div> <button class="btn-sub" style="width:100%; margin-top:12px;" onclick="closeModal('alarmModal')">닫기</button> </div> </div> <!-- 4. 배경 및 이미지 꾸미기 모달 --> <div id="themeModal" class="modal-backdrop"> <div class="modal-card"> <h3 style="margin:0 0 8px; font-size:17px; font-weight:800;">🎨 위치별 배경/배너 꾸미기</h3> <p style="font-size:12px; color:#64748b; margin-bottom:10px;">사진은 용량 초과 방지를 위해 자동으로 최적화 압축되어 저장됩니다.</p> <label style="font-size:12px; font-weight:700; color:#be185d;">1. 상단 포토 배너 사진</label> <input type="file" accept="image/*" class="input-box" onchange="uploadThemeImage(event, 'headerBg')"> <label style="font-size:12px; font-weight:700;">상단 배너 높이 조절</label> <input type="range" id="bannerHeightRange" min="100" max="280" step="10" value="140" class="input-box" oninput="updateBannerHeight(this.value)"> <label style="font-size:12px; font-weight:700; color:#4f46e5; margin-top:6px;">2. 앱 전체 배경 이미지</label> <input type="file" accept="image/*" class="input-box" onchange="uploadThemeImage(event, 'appBg')"> <label style="font-size:12px; font-weight:700;">전체 배경 투명도 조절</label> <input type="range" id="bgOpacityRange" min="0.5" max="0.98" step="0.02" value="0.92" class="input-box" oninput="updateBgOpacity(this.value)"> <div style="display:flex; gap:8px; margin-top:8px;"> <button class="btn-sub" style="flex:1; color:#dc2626;" onclick="resetThemeImages()">배경/배너 초기화</button> <button class="btn-primary" style="flex:1;" onclick="closeModal('themeModal')">완료</button> </div> </div> </div> <!-- 5. 자연어 백업/복원 모달 --> <div id="backupModal" class="modal-backdrop"> <div class="modal-card"> <h3 style="margin:0 0 8px; font-size:17px; font-weight:800;">💾 자연어 백업 및 복원</h3> <p style="font-size:12px; color:#64748b; margin-bottom:8px;">사람이 읽기 쉬운 자연어 형태로 일정을 복사하거나 붙여넣어 복원할 수 있습니다.</p> <textarea id="naturalBackupText" class="input-box" rows="8" style="font-family:monospace; font-size:12px;"></textarea> <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;"> <button class="btn-primary" onclick="copyNaturalText()">📋 텍스트 복사</button> <button class="btn-primary" style="background:#15803d;" onclick="restoreFromNaturalText()">🔄 이 내용으로 복원</button> </div> <button class="btn-sub" style="width:100%; margin-top:8px;" onclick="closeModal('backupModal')">닫기</button> </div> </div> <script> const memoryStore = {}; function safeGet(key, fallback) { try { const val = localStorage.getItem(key); return val ? JSON.parse(val) : fallback; } catch (e) { return memoryStore[key] !== undefined ? memoryStore[key] : fallback; } } function safeSet(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) { memoryStore[key] = val; } } const todayObj = new Date(); function fmtDate(d) { const y = d.getFullYear(); const m = String(d.getMonth() + 1).padStart(2, '0'); const day = String(d.getDate()).padStart(2, '0'); return `${y}-${m}-${day}`; } let state = { viewMode: 'month', currentDate: new Date(todayObj.getFullYear(), todayObj.getMonth(), todayObj.getDate()), selectedDate: fmtDate(todayObj), tasks: safeGet('mp_tasks_v1', []), dayStickers: safeGet('mp_stickers_v1', {}), theme: safeGet('mp_theme_v1', { appBg: '', headerBg: '', opacity: 0.92, bannerHeight: 140 }), fileName: safeGet('mp_filename_v1', '마이플래너_백업데이터') }; function persistAll() { safeSet('mp_tasks_v1', state.tasks); safeSet('mp_stickers_v1', state.dayStickers); safeSet('mp_theme_v1', state.theme); safeSet('mp_filename_v1', state.fileName); updateFooter(); } function applyTheme() { const bgLayer = document.getElementById('bgLayer'); const appShell = document.getElementById('appShell'); const bannerContainer = document.getElementById('bannerContainer'); const bannerPlaceholder = document.getElementById('bannerPlaceholder'); const bannerTag = document.getElementById('bannerTag'); const pathDisplay = document.getElementById('pathDisplay'); const fileInput = document.getElementById('customFileName'); const rangeInput = document.getElementById('bannerHeightRange'); if (fileInput) fileInput.value = state.fileName; if (rangeInput) rangeInput.value = state.theme.bannerHeight || 140; if (pathDisplay) pathDisplay.textContent = `저장소: 내부저장소 (${state.fileName})`; // 1. 앱 전체 배경 적용 if (state.theme.appBg) { bgLayer.style.backgroundImage = `url(${state.theme.appBg})`; appShell.style.backgroundColor = `rgba(255, 255, 255, ${state.theme.opacity || 0.92})`; } else { bgLayer.style.backgroundImage = 'none'; appShell.style.backgroundColor = '#ffffff'; } // 2. 상단 독립 포토 배너 적용 (선명하게 꽉 참) const bHeight = state.theme.bannerHeight || 140; bannerContainer.style.height = bHeight + 'px'; if (state.theme.headerBg) { bannerContainer.style.backgroundImage = `url(${state.theme.headerBg})`; bannerContainer.classList.add('has-image'); bannerPlaceholder.style.display = 'none'; bannerTag.style.display = 'block'; } else { bannerContainer.style.backgroundImage = 'none'; bannerContainer.classList.remove('has-image'); bannerPlaceholder.style.display = 'flex'; bannerTag.style.display = 'none'; } } function compressImage(file, maxW, quality, callback) { const reader = new FileReader(); reader.onload = function(e) { const img = new Image(); img.onload = function() { const canvas = document.createElement('canvas'); let w = img.width, h = img.height; if (w > maxW) { h = Math.round(h * (maxW / w)); w = maxW; } canvas.width = w; canvas.height = h; const ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0, w, h); callback(canvas.toDataURL('image/jpeg', quality)); }; img.src = e.target.result; }; reader.readAsDataURL(file); } window.uploadThemeImage = function(e, type) { const file = e.target.files[0]; if (!file) return; compressImage(file, 900, 0.8, function(dataUrl) { state.theme[type] = dataUrl; persistAll(); applyTheme(); }); e.target.value = ''; }; window.updateBannerHeight = function(val) { state.theme.bannerHeight = parseInt(val); persistAll(); applyTheme(); }; window.updateBgOpacity = function(val) { state.theme.opacity = parseFloat(val); persistAll(); applyTheme(); }; window.resetThemeImages = function() { state.theme = { appBg: '', headerBg: '', opacity: 0.92, bannerHeight: 140 }; state.dayStickers = {}; persistAll(); applyTheme(); render(); }; window.triggerDaySticker = function() { document.getElementById('dayStickerInput').click(); }; window.handleDayStickerUpload = function(e) { const file = e.target.files[0]; if (!file) return; compressImage(file, 300, 0.65, function(dataUrl) { state.dayStickers[state.selectedDate] = dataUrl; persistAll(); render(); }); e.target.value = ''; }; window.removeDaySticker = function(dateStr) { delete state.dayStickers[dateStr]; persistAll(); render(); }; window.setViewMode = function(mode) { state.viewMode = mode; ['year', 'month', 'week', 'day'].forEach(m => { const btn = document.getElementById('tab-' + m); if (btn) btn.className = 'view-tab' + (m === mode ? ' active' : ''); }); render(); }; window.movePeriod = function(dir) { const d = state.currentDate; if (state.viewMode === 'year') d.setFullYear(d.getFullYear() + dir); else if (state.viewMode === 'month') d.setMonth(d.getMonth() + dir); else if (state.viewMode === 'week') d.setDate(d.getDate() + dir * 7); else if (state.viewMode === 'day') { d.setDate(d.getDate() + dir); state.selectedDate = fmtDate(d); } render(); }; window.goToday = function() { const now = new Date(); state.currentDate = new Date(now.getFullYear(), now.getMonth(), now.getDate()); state.selectedDate = fmtDate(now); render(); }; window.selectDate = function(dateStr) { state.selectedDate = dateStr; const parts = dateStr.split('-'); state.currentDate = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2])); render(); }; function render() { const y = state.currentDate.getFullYear(); const m = state.currentDate.getMonth(); const titleEl = document.getElementById('periodTitle'); const mainEl = document.getElementById('mainView'); if (state.viewMode === 'year') { titleEl.textContent = `${y}년 연간 현황`; mainEl.innerHTML = renderYearView(y); } else if (state.viewMode === 'month') { titleEl.textContent = `${y}년 ${m + 1}월`; mainEl.innerHTML = renderMonthView(y, m) + renderSelectedDayPanel(state.selectedDate); } else if (state.viewMode === 'week') { titleEl.textContent = `${y}년 ${m + 1}월 (주간)`; mainEl.innerHTML = renderWeekView(state.currentDate); } else { titleEl.textContent = `${state.selectedDate} (일간)`; mainEl.innerHTML = renderSelectedDayPanel(state.selectedDate); } updateFooter(); } function renderYearView(year) { let html = `<div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px; padding:12px 16px;">`; for (let m = 0; m < 12; m++) { const prefix = `${year}-${String(m + 1).padStart(2, '0')}`; const mTasks = state.tasks.filter(t => t.date.startsWith(prefix)); const doneCount = mTasks.filter(t => t.status === 'done').length; const pct = mTasks.length ? Math.round((doneCount / mTasks.length) * 100) : 0; html += ` <div onclick="jumpToMonth(${year}, ${m})" style="background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:12px; cursor:pointer; box-shadow:0 1px 3px rgba(0,0,0,0.04);"> <div style="font-size:15px; font-weight:800; color:#1e293b;">${m + 1}월</div> <div style="font-size:11px; color:#64748b; margin-top:4px;">일정 ${mTasks.length}개</div> <div style="height:6px; background:#f1f5f9; border-radius:4px; margin-top:8px; overflow:hidden;"> <div style="height:100%; width:${pct}%; background:#4f46e5;"></div> </div> <div style="font-size:11px; font-weight:700; color:#4f46e5; margin-top:4px;">달성 ${pct}%</div> </div>`; } html += `</div>`; return html; } window.jumpToMonth = function(y, m) { state.currentDate = new Date(y, m, 1); state.selectedDate = fmtDate(state.currentDate); setViewMode('month'); }; function renderMonthView(year, month) { const weekdays = ['일', '월', '화', '수', '목', '금', '토']; let html = `<div class="cal-grid">`; weekdays.forEach((w, idx) => { const color = idx === 0 ? '#ef4444' : idx === 6 ? '#3b82f6' : '#64748b'; html += `<div class="weekday" style="color:${color};">${w}</div>`; }); const firstDay = new Date(year, month, 1).getDay(); const lastDate = new Date(year, month + 1, 0).getDate(); const prevLastDate = new Date(year, month, 0).getDate(); const todayStr = fmtDate(new Date()); for (let i = firstDay - 1; i >= 0; i--) { html += `<div class="day-cell" style="opacity:0.3;"><div class="day-num">${prevLastDate - i}</div></div>`; } for (let d = 1; d <= lastDate; d++) { const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`; const dayOfWeek = new Date(year, month, d).getDay(); const isSel = dateStr === state.selectedDate; const isToday = dateStr === todayStr; const sticker = state.dayStickers[dateStr]; const dayTasks = state.tasks.filter(t => t.date === dateStr); let numColor = dayOfWeek === 0 ? '#ef4444' : dayOfWeek === 6 ? '#2563eb' : '#1e293b'; let bgStyle = sticker ? `background-image:url(${sticker});` : ''; let dotsHtml = ''; dayTasks.slice(0, 4).forEach(t => { const c = t.status === 'done' ? '#10b981' : t.status === 'doing' ? '#3b82f6' : '#f59e0b'; dotsHtml += `<span class="dot" style="background:${c};"></span>`; }); html += ` <div class="day-cell ${isSel ? 'selected' : ''} ${isToday ? 'today' : ''}" style="${bgStyle}" onclick="selectDate('${dateStr}')"> <div class="day-num" style="color:${numColor};">${d}</div> <div class="dot-row">${dotsHtml}</div> </div>`; } html += `</div>`; return html; } function renderWeekView(refDate) { const start = new Date(refDate); start.setDate(start.getDate() - start.getDay()); const weekdays = ['일', '월', '화', '수', '목', '금', '토']; let html = `<div style="padding:8px 16px; display:flex; flex-direction:column; gap:10px;">`; for (let i = 0; i < 7; i++) { const cur = new Date(start); cur.setDate(start.getDate() + i); const dStr = fmtDate(cur); const dTasks = state.tasks.filter(t => t.date === dStr); html += ` <div style="background:#fff; border:1px solid ${dStr === state.selectedDate ? '#4f46e5' : '#e2e8f0'}; border-radius:14px; padding:12px;" onclick="selectDate('${dStr}')"> <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;"> <span style="font-weight:800; font-size:14px;">${dStr} (${weekdays[i]})</span> <button class="btn-mini" style="background:#eef2ff; color:#4f46e5;" onclick="event.stopPropagation(); selectDate('${dStr}'); openTaskModal();">+ 추가</button> </div> ${dTasks.length === 0 ? `<div style="font-size:12px; color:#94a3b8;">등록된 일정이 없습니다.</div>` : dTasks.map(t => renderTaskItem(t)).join('')} </div>`; } html += `</div>`; return html; } function renderSelectedDayPanel(dateStr) { const dayTasks = state.tasks.filter(t => t.date === dateStr).sort((a, b) => (a.time || '').localeCompare(b.time || '')); const sticker = state.dayStickers[dateStr]; return ` <div style="margin:12px 16px 0; padding-top:10px; border-top:1px solid #e2e8f0;"> <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:6px;"> <button onclick="triggerDaySticker()" style="background:#fdf2f8; color:#be185d; border:1px solid #fbcfe8; padding:6px 12px; border-radius:20px; font-size:12px; font-weight:700; cursor:pointer;"> ✨ 선택 날짜에 사진/스티커 넣기 </button> ${sticker ? `<button onclick="removeDaySticker('${dateStr}')" style="background:#fee2e2; color:#dc2626; border:none; padding:5px 10px; border-radius:14px; font-size:11px; font-weight:700; cursor:pointer;">스티커 삭제</button>` : ''} </div> <div style="background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04);"> <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;"> <div style="font-size:15px; font-weight:800; color:#0f172a;">📌 ${dateStr} 일정 (${dayTasks.length}개)</div> <button class="btn-mini" style="background:#4f46e5; color:#fff;" onclick="openTaskModal()">+ 새 일정</button> </div> ${dayTasks.length === 0 ? `<div style="text-align:center; padding:24px 0; color:#94a3b8; font-size:13px;">이 날짜에 등록된 일정이 없습니다.<br>우측 하단 + 버튼을 눌러 추가해 보세요!</div>` : `<div style="display:flex; flex-direction:column; gap:8px;">${dayTasks.map(t => renderTaskItem(t)).join('')}</div>` } </div> </div>`; } function renderTaskItem(t) { const badgeMap = { todo: { text: '대기', bg: '#fef3c7', col: '#b45309' }, doing: { text: '진행중', bg: '#dbeafe', col: '#1d4ed8' }, done: { text: '완료', bg: '#d1fae5', col: '#047857' } }; const b = badgeMap[t.status] || badgeMap.todo; return ` <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:10px; border-radius:12px; background:#f8fafc; border:1px solid #e2e8f0;"> <div style="min-width:0; flex:1;" onclick="cycleStatus('${t.id}')"> <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;"> <span style="font-size:11px; font-weight:800; padding:2px 7px; border-radius:6px; background:${b.bg}; color:${b.col};">${b.text}</span> <span style="font-size:12px; font-weight:700; color:#4f46e5;">${t.time || '종일'}</span> <span style="font-size:14px; font-weight:700; color:#1e293b; ${t.status === 'done' ? 'text-decoration:line-through; opacity:0.6;' : ''}">${t.title}</span> </div> ${t.memo ? `<div style="font-size:12px; color:#64748b; margin-top:3px;">${t.memo}</div>` : ''} </div> <div style="display:flex; gap:4px; flex-shrink:0;"> <button class="btn-mini" style="background:#fef3c7; color:#b45309; padding:5px 7px;" onclick="exportICS('${t.id}')">📲폰알람</button> <button class="btn-mini" style="background:#e2e8f0; color:#334155; padding:5px 7px;" onclick="editTask('${t.id}')">수정</button> <button class="btn-mini" style="background:#fee2e2; color:#dc2626; padding:5px 7px;" onclick="deleteTask('${t.id}')">삭제</button> </div> </div>`; } window.openTaskModal = function() { document.getElementById('taskModalTitle').textContent = '새 일정 추가'; document.getElementById('editTaskId').value = ''; document.getElementById('taskDateInput').value = state.selectedDate; document.getElementById('taskTimeInput').value = '09:00'; document.getElementById('taskTitleInput').value = ''; document.getElementById('taskStatusInput').value = 'todo'; document.getElementById('taskAlarmInput').value = 'none'; document.getElementById('taskMemoInput').value = ''; openModal('taskModal'); }; window.editTask = function(id) { const t = state.tasks.find(x => x.id === id); if (!t) return; document.getElementById('taskModalTitle').textContent = '일정 수정'; document.getElementById('editTaskId').value = t.id; document.getElementById('taskDateInput').value = t.date; document.getElementById('taskTimeInput').value = t.time || '09:00'; document.getElementById('taskTitleInput').value = t.title; document.getElementById('taskStatusInput').value = t.status; document.getElementById('taskAlarmInput').value = t.alarm || 'none'; document.getElementById('taskMemoInput').value = t.memo || ''; openModal('taskModal'); }; window.saveTask = function() { const id = document.getElementById('editTaskId').value; const date = document.getElementById('taskDateInput').value || state.selectedDate; const time = document.getElementById('taskTimeInput').value || '09:00'; const title = document.getElementById('taskTitleInput').value.trim(); const status = document.getElementById('taskStatusInput').value; const alarm = document.getElementById('taskAlarmInput').value; const memo = document.getElementById('taskMemoInput').value.trim(); if (!title) { alert('일정 내용을 입력해 주세요!'); return; } if (id) { const idx = state.tasks.findIndex(x => x.id === id); if (idx > -1) state.tasks[idx] = { id, date, time, title, status, alarm, memo }; } else { state.tasks.push({ id: 't_' + Date.now(), date, time, title, status, alarm, memo }); } state.selectedDate = date; persistAll(); closeModal('taskModal'); render(); }; window.deleteTask = function(id) { state.tasks = state.tasks.filter(x => x.id !== id); persistAll(); render(); }; window.cycleStatus = function(id) { const t = state.tasks.find(x => x.id === id); if (!t) return; const order = ['todo', 'doing', 'done']; t.status = order[(order.indexOf(t.status) + 1) % 3]; persistAll(); render(); }; window.loadSampleData = function() { const d = state.selectedDate; state.tasks.push( { id: 't_' + Date.now() + 1, date: d, time: '09:30', title: '오전 업무 및 일정 체크', status: 'done', alarm: '10', memo: '중요 안건 정리' }, { id: 't_' + Date.now() + 2, date: d, time: '14:00', title: '외부 미팅 및 자료 검토', status: 'doing', alarm: '30', memo: '노트북 지참' }, { id: 't_' + Date.now() + 3, date: d, time: '19:00', title: '저녁 운동 40분', status: 'todo', alarm: 'none', memo: '' } ); persistAll(); render(); }; function updateFooter() { const total = state.tasks.length; const done = state.tasks.filter(t => t.status === 'done').length; const el = document.getElementById('footerSummary'); if (el) el.textContent = `🟢 전체 일정 ${total}개 (완료 ${done}개)`; } function generateNaturalBackup() { if (state.tasks.length === 0) return '등록된 일정이 없습니다.'; const grouped = {}; state.tasks.slice().sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time)).forEach(t => { if (!grouped[t.date]) grouped[t.date] = []; grouped[t.date].push(t); }); const statusKor = { todo: '대기', doing: '진행중', done: '완료' }; let lines = ['=== 마이 플래너 일정 백업 ===', '']; Object.keys(grouped).forEach(date => { lines.push(`[${date}]`); grouped[date].forEach(t => { lines.push(`- ${t.time || '09:00'} ${t.title} (${statusKor[t.status] || '대기'})${t.memo ? ' | 메모: ' + t.memo : ''}`); }); lines.push(''); }); return lines.join('\n'); } window.openBackupModal = function() { document.getElementById('naturalBackupText').value = generateNaturalBackup(); openModal('backupModal'); }; window.copyNaturalText = function() { const el = document.getElementById('naturalBackupText'); el.select(); try { navigator.clipboard.writeText(el.value); alert('자연어 백업 텍스트가 클립보드에 복사되었습니다!'); } catch (e) { document.execCommand('copy'); alert('복사되었습니다!'); } }; window.restoreFromNaturalText = function() { const raw = document.getElementById('naturalBackupText').value; parseAndRestoreNatural(raw); closeModal('backupModal'); }; function parseAndRestoreNatural(raw) { const lines = raw.split('\n'); let curDate = state.selectedDate; const restored = []; lines.forEach(line => { const trimmed = line.trim(); const dateMatch = trimmed.match(/^\[(\d{4}-\d{2}-\d{2})\]/); if (dateMatch) { curDate = dateMatch[1]; return; } const taskMatch = trimmed.match(/^-\s*(\d{2}:\d{2})\s+(.+?)\s*\((대기\vert{}진행중\vert{}완료)\)(?:\s*\|\s*메모:\s*(.*))?$/); if (taskMatch) { const stMap = { '대기': 'todo', '진행중': 'doing', '완료': 'done' }; restored.push({ id: 't_' + Date.now() + Math.random().toString(36).slice(2, 6), date: curDate, time: taskMatch[1], title: taskMatch[2].trim(), status: stMap[taskMatch[3]] || 'todo', alarm: 'none', memo: taskMatch[4] ? taskMatch[4].trim() : '' }); } }); if (restored.length > 0) { state.tasks = restored; persistAll(); render(); alert(`총 ${restored.length}개의 일정이 성공적으로 복원되었습니다!`); } else { alert('복원할 수 있는 자연어 일정 형식을 찾지 못했습니다.'); } } window.updatePathName = function() { const val = document.getElementById('customFileName').value.trim() || '마이플래너_백업데이터'; state.fileName = val; persistAll(); applyTheme(); }; window.saveToFileSystem = async function(ext) { updatePathName(); const content = ext === 'json' ? JSON.stringify({ tasks: state.tasks, dayStickers: state.dayStickers, theme: state.theme }, null, 2) : generateNaturalBackup(); const fullFileName = `${state.fileName}.${ext}`; if (window.showSaveFilePicker) { try { const handle = await window.showSaveFilePicker({ suggestedName: fullFileName }); const writable = await handle.createWritable(); await writable.write(content); await writable.close(); alert(`선택하신 폴더에 [${fullFileName}] 파일이 저장되었습니다!`); return; } catch (err) { if (err.name === 'AbortError') return; } } const blob = new Blob([content], { type: 'text/plain;charset=utf-8' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = fullFileName; document.body.appendChild(a); a.click(); document.body.removeChild(a); }; window.handleFileRestore = function(e) { const file = e.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = function(ev) { const text = ev.target.result; if (file.name.endsWith('.json')) { try { const obj = JSON.parse(text); if (obj.tasks) state.tasks = obj.tasks; if (obj.dayStickers) state.dayStickers = obj.dayStickers; if (obj.theme) state.theme = obj.theme; persistAll(); applyTheme(); render(); alert('전체 데이터가 복원되었습니다!'); } catch (err) { alert('올바른 JSON 백업 파일이 아닙니다.'); } } else { parseAndRestoreNatural(text); } closeModal('pathModal'); }; reader.readAsText(file); e.target.value = ''; }; function playBeepAlarm() { try { const Ctx = window.AudioContext || window.webkitAudioContext; const ctx = new Ctx(); [523.25, 659.25, 783.99, 1046.5].forEach((freq, idx) => { const osc = ctx.createOscillator(); const gain = ctx.createGain(); osc.type = 'sine'; osc.frequency.value = freq; gain.gain.setValueAtTime(0.25, ctx.currentTime + idx * 0.18); gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + (idx + 1) * 0.18); osc.connect(gain); gain.connect(ctx.destination); osc.start(ctx.currentTime + idx * 0.18); osc.stop(ctx.currentTime + (idx + 1) * 0.18); }); if (navigator.vibrate) navigator.vibrate([300, 150, 300]); } catch (e) {} } window.requestAlarmPermission = function() { if (!('Notification' in window)) { alert('현재 브라우저는 시스템 알림을 지원하지 않습니다.'); return; } Notification.requestPermission().then(p => { alert(p === 'granted' ? '알림 권한이 허용되었습니다!' : '알림 권한이 거부되었습니다.'); }); }; window.testAlarmIn5Sec = function() { closeModal('alarmModal'); setTimeout(() => { playBeepAlarm(); if ('Notification' in window && Notification.permission === 'granted') { new Notification('🔔 마이 플래너 알람 테스트', { body: '오프라인 소리 및 진동 알람이 정상 작동합니다!' }); } alert('🔔 [알람 테스트] 지정된 시간이 되었습니다!'); }, 5000); }; window.exportICS = function(id) { const t = state.tasks.find(x => x.id === id); if (!t) return; const dClean = t.date.replace(/-/g, ''); const tClean = (t.time || '09:00').replace(':', '') + '00'; const ics = [ 'BEGIN:VCALENDAR', 'VERSION:2.0', 'BEGIN:VEVENT', `DTSTART:${dClean}T${tClean}`, `DTEND:${dClean}T${tClean}`, `SUMMARY:${t.title}`, `DESCRIPTION:${t.memo || '마이 플래너 일정'}`, 'BEGIN:VALARM', 'TRIGGER:-PT10M', 'ACTION:DISPLAY', 'DESCRIPTION:Reminder', 'END:VALARM', 'END:VEVENT', 'END:VCALENDAR' ].join('\r\n'); const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `${t.title}.ics`; document.body.appendChild(a); a.click(); document.body.removeChild(a); }; window.openModal = function(id) { document.getElementById(id).classList.add('open'); }; window.closeModal = function(id) { document.getElementById(id).classList.remove('open'); }; // Service Worker 안전 등록 (화면 노출 방지) if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js').catch(() => {}); }); } applyTheme(); render(); </script> </body> </html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#4f46e5">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="./manifest.json">
+  <title>마이 플래너</title>
+  <style>
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif; background: #f8fafc; color: #1e293b; overflow-x: hidden; user-select: none; }
+    .app-shell { max-width: 480px; margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column; position: relative; background: rgba(255,255,255,0.94); padding-bottom: 40px; }
+    .bg-layer { position: fixed; inset: 0; z-index: -1; background-size: cover; background-position: center; }
+    .header-box { padding: 14px 16px 10px; border-bottom: 1px solid #e2e8f0; background: rgba(255,255,255,0.95); }
+    .top-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .brand { display: flex; align-items: center; gap: 8px; min-width: 0; }
+    .brand-icon { width: 34px; height: 34px; border-radius: 10px; background: #4f46e5; color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
+    .brand-title { font-size: 18px; font-weight: 800; color: #0f172a; white-space: nowrap; }
+    .path-text { font-size: 11px; color: #64748b; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 210px; }
+    .mini-btns { display: flex; gap: 6px; flex-shrink: 0; }
+    .btn-mini { padding: 6px 10px; border-radius: 8px; font-size: 12px; font-weight: 700; border: none; cursor: pointer; white-space: nowrap; }
+    .menu-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 10px; }
+    .menu-chip { display: flex; align-items: center; justify-content: center; gap: 4px; padding: 8px 4px; border-radius: 10px; font-size: 12px; font-weight: 700; border: 1px solid transparent; cursor: pointer; white-space: nowrap; }
+    /* 독립된 상단 배너 영역 */
+    .banner-box { margin: 12px 16px 4px; border-radius: 16px; overflow: hidden; position: relative; background-size: cover; background-position: center; border: 2px dashed #cbd5e1; background-color: #f1f5f9; display: flex; align-items: center; justify-content: center; cursor: pointer; min-height: 125px; }
+    .banner-box.has-img { border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .banner-txt { font-size: 13px; font-weight: 700; color: #64748b; padding: 16px; text-align: center; }
+    .banner-badge { position: absolute; right: 10px; bottom: 10px; background: rgba(15,23,42,0.7); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
+    .nav-bar { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px 8px; }
+    .nav-title { font-size: 19px; font-weight: 800; color: #0f172a; }
+    .nav-arrow { width: 34px; height: 34px; border-radius: 50%; border: none; background: #f1f5f9; color: #334155; font-size: 18px; font-weight: bold; cursor: pointer; }
+    .view-tabs { display: grid; grid-template-columns: repeat(4, 1fr); background: #f1f5f9; padding: 4px; border-radius: 12px; margin: 0 16px 10px; }
+    .view-tab { padding: 7px 0; text-align: center; font-size: 13px; font-weight: 700; border-radius: 9px; border: none; background: transparent; color: #64748b; cursor: pointer; }
+    .view-tab.active { background: #fff; color: #4f46e5; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; padding: 0 12px; }
+    .weekday { text-align: center; font-size: 12px; font-weight: 700; padding: 6px 0; color: #64748b; }
+    .day-cell { min-height: 54px; border-radius: 12px; padding: 4px 2px; display: flex; flex-direction: column; align-items: center; cursor: pointer; position: relative; border: 2px solid transparent; background-size: cover; background-position: center; overflow: hidden; }
+    .day-cell.selected { border-color: #4f46e5; background-color: #eef2ff; }
+    .day-cell.today .day-num { background: #4f46e5; color: #fff !important; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; }
+    .day-num { font-size: 13px; font-weight: 700; z-index: 1; text-shadow: 0 0 4px rgba(255,255,255,0.9); }
+    .dot-row { display: flex; gap: 3px; margin-top: 4px; z-index: 1; flex-wrap: wrap; justify-content: center; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; }
+    .fab { position: fixed; right: 20px; bottom: 56px; width: 54px; height: 54px; border-radius: 50%; background: #4f46e5; color: #fff; border: none; font-size: 28px; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 16px rgba(79,70,229,0.4); cursor: pointer; z-index: 30; }
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(15,23,42,0.55); display: none; align-items: center; justify-content: center; padding: 16px; z-index: 50; }
+    .modal-backdrop.open { display: flex; }
+    .modal-card { background: #fff; width: 100%; max-width: 420px; border-radius: 20px; padding: 20px; max-height: 86vh; overflow-y: auto; }
+    .input-box { width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 14px; margin: 4px 0 10px; }
+    .btn-primary { background: #4f46e5; color: #fff; border: none; padding: 10px 14px; border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer; width: 100%; }
+    .btn-sub { background: #f1f5f9; color: #334155; border: none; padding: 10px 14px; border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div id="bgLayer" class="bg-layer"></div>
+  <div class="app-shell" id="appShell">
+    <header class="header-box">
+      <div class="top-row">
+        <div class="brand">
+          <div class="brand-icon">📅</div>
+          <div style="min-width:0;">
+            <div class="brand-title">마이 플래너</div>
+            <div class="path-text" id="pathDisplay">저장소: 내부저장소 (자동저장됨)</div>
+          </div>
+        </div>
+        <div class="mini-btns">
+          <button type="button" class="btn-mini" style="background:#f1f5f9; color:#475569;" onclick="loadSampleData()">샘플</button>
+          <button type="button" class="btn-mini" style="background:#eef2ff; color:#4f46e5;" onclick="goToday()">오늘</button>
+        </div>
+      </div>
+      <div class="menu-grid">
+        <button type="button" class="menu-chip" style="background:#ecfeff; color:#0e7490; border-color:#a5f3fc;" onclick="openModal('pathModal')">📁 저장경로</button>
+        <button type="button" class="menu-chip" style="background:#fefce8; color:#a16207; border-color:#fde047;" onclick="openModal('alarmModal')">🔔 알람</button>
+        <button type="button" class="menu-chip" style="background:#fdf2f8; color:#be185d; border-color:#fbcfe8;" onclick="openModal('themeModal')">🎨 꾸미기</button>
+        <button type="button" class="menu-chip" style="background:#f0fdf4; color:#15803d; border-color:#bbf7d0;" onclick="openBackupModal()">💾 백업/복원</button>
+      </div>
+    </header>
+
+    <!-- 독립된 상단 배너 칸 -->
+    <div id="bannerBox" class="banner-box" onclick="document.getElementById('bannerInput').click()">
+      <div id="bannerTxt" class="banner-txt">🖼️ 여기를 눌러 선명한 상단 배너 사진을 넣어보세요!</div>
+      <div id="bannerBadge" class="banner-badge" style="display:none;">📷 배너 변경</div>
+    </div>
+
+    <div class="nav-bar">
+      <button type="button" class="nav-arrow" onclick="movePeriod(-1)">‹</button>
+      <div class="nav-title" id="periodTitle">2026년 10월</div>
+      <button type="button" class="nav-arrow" onclick="movePeriod(1)">›</button>
+    </div>
+
+    <div class="view-tabs">
+      <button type="button" class="view-tab" id="tab-year" onclick="setViewMode('year')">년</button>
+      <button type="button" class="view-tab active" id="tab-month" onclick="setViewMode('month')">월</button>
+      <button type="button" class="view-tab" id="tab-week" onclick="setViewMode('week')">주</button>
+      <button type="button" class="view-tab" id="tab-day" onclick="setViewMode('day')">일</button>
+    </div>
+
+    <!-- 달력이 즉시 표시되는 메인 영역 -->
+    <main id="mainView" style="flex:1; padding-bottom: 90px;"></main>
+
+    <button type="button" class="fab" onclick="openTaskModal()">+</button>
+
+    <footer style="position:fixed; bottom:0; left:0; right:0; max-width:480px; margin:0 auto; background:rgba(255,255,255,0.95); border-top:1px solid #e2e8f0; padding:8px 14px; display:flex; justify-content:space-between; align-items:center; font-size:12px; z-index:20;">
+      <div id="footerSummary" style="font-weight:700; color:#334155;">🟢 전체 일정 0개 (완료 0개)</div>
+      <div style="display:flex; gap:8px; font-weight:700;">
+        <span style="color:#f59e0b;">● 대기</span>
+        <span style="color:#3b82f6;">● 진행</span>
+        <span style="color:#10b981;">● 완료</span>
+      </div>
+    </footer>
+  </div>
+
+  <input type="file" id="bannerInput" accept="image/*" style="display:none" onchange="uploadThemeImage(event, 'headerBg')">
+  <input type="file" id="dayStickerInput" accept="image/*" style="display:none" onchange="handleDayStickerUpload(event)">
+  <input type="file" id="restoreFileInput" accept=".txt,.json" style="display:none" onchange="handleFileRestore(event)">
+
+  <!-- 모달창들 -->
+  <div id="taskModal" class="modal-backdrop">
+    <div class="modal-card">
+      <h3 style="margin:0 0 12px; font-size:17px; font-weight:800;" id="taskModalTitle">일정 추가</h3>
+      <input type="hidden" id="editTaskId">
+      <label style="font-size:12px; font-weight:700;">날짜</label>
+      <input type="date" id="taskDateInput" class="input-box">
+      <label style="font-size:12px; font-weight:700;">시간</label>
+      <input type="time" id="taskTimeInput" class="input-box" value="09:00">
+      <label style="font-size:12px; font-weight:700;">일정 내용</label>
+      <input type="text" id="taskTitleInput" class="input-box" placeholder="예: 회의, 병원 예약">
+      <label style="font-size:12px; font-weight:700;">진행 상태</label>
+      <select id="taskStatusInput" class="input-box">
+        <option value="todo">🟡 대기 (예정)</option>
+        <option value="doing">🔵 진행중</option>
+        <option value="done">🟢 완료</option>
+      </select>
+      <label style="font-size:12px; font-weight:700;">알람 설정</label>
+      <select id="taskAlarmInput" class="input-box">
+        <option value="none">알람 없음</option>
+        <option value="0">정각에 알림</option>
+        <option value="10">10분 전 알림</option>
+        <option value="30">30분 전 알림</option>
+      </select>
+      <label style="font-size:12px; font-weight:700;">메모</label>
+      <textarea id="taskMemoInput" class="input-box" rows="2" placeholder="메모 입력"></textarea>
+      <div style="display:flex; gap:8px; margin-top:8px;">
+        <button type="button" class="btn-sub" style="flex:1;" onclick="closeModal('taskModal')">취소</button>
+        <button type="button" class="btn-primary" style="flex:1;" onclick="saveTask()">저장하기</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="pathModal" class="modal-backdrop">
+    <div class="modal-card">
+      <h3 style="margin:0 0 8px; font-size:17px; font-weight:800;">📁 데이터 저장 경로 및 파일 관리</h3>
+      <label style="font-size:12px; font-weight:700;">저장할 파일명</label>
+      <input type="text" id="customFileName" class="input-box" value="마이플래너_백업데이터" onchange="updatePathName()">
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <button type="button" class="btn-primary" onclick="saveToFileSystem('txt')">📄 자연어 텍스트(.txt) 저장</button>
+        <button type="button" class="btn-primary" style="background:#0e7490;" onclick="saveToFileSystem('json')">📦 배너/배경 포함 전체(.json) 저장</button>
+        <button type="button" class="btn-sub" onclick="document.getElementById('restoreFileInput').click()">📂 백업 파일 불러오기</button>
+      </div>
+      <button type="button" class="btn-sub" style="width:100%; margin-top:12px;" onclick="closeModal('pathModal')">닫기</button>
+    </div>
+  </div>
+
+  <div id="alarmModal" class="modal-backdrop">
+    <div class="modal-card">
+      <h3 style="margin:0 0 8px; font-size:17px; font-weight:800;">🔔 오프라인 알람 & 폰 캘린더 연동</h3>
+      <p style="font-size:12px; color:#64748b; margin-bottom:12px;">일정 옆의 <b>[📲폰알람]</b> 버튼을 누르면 스마트폰 기본 캘린더 알람으로 등록됩니다.</p>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <button type="button" class="btn-primary" onclick="requestAlarmPermission()">1. 브라우저 알림 권한 허용</button>
+        <button type="button" class="btn-primary" style="background:#d97706;" onclick="testAlarmIn5Sec()">2. 5초 뒤 알람 소리/진동 테스트</button>
+      </div>
+      <button type="button" class="btn-sub" style="width:100%; margin-top:12px;" onclick="closeModal('alarmModal')">닫기</button>
+    </div>
+  </div>
+
+  <div id="themeModal" class="modal-backdrop">
+    <div class="modal-card">
+      <h3 style="margin:0 0 8px; font-size:17px; font-weight:800;">🎨 배너 및 배경 이미지 꾸미기</h3>
+      <label style="font-size:12px; font-weight:700; color:#be185d;">1. 상단 배너 사진 선택</label>
+      <input type="file" accept="image/*" class="input-box" onchange="uploadThemeImage(event, 'headerBg')">
+      <label style="font-size:12px; font-weight:700;">상단 배너 세로 크기 조절</label>
+      <input type="range" id="bannerHeightRange" min="90" max="260" step="10" value="140" class="input-box" oninput="updateBannerHeight(this.value)">
+      <label style="font-size:12px; font-weight:700; color:#4f46e5;">2. 앱 전체 배경 이미지</label>
+      <input type="file" accept="image/*" class="input-box" onchange="uploadThemeImage(event, 'appBg')">
+      <label style="font-size:12px; font-weight:700;">전체 배경 투명도</label>
+      <input type="range" id="bgOpacityRange" min="0.5" max="0.98" step="0.02" value="0.92" class="input-box" oninput="updateBgOpacity(this.value)">
+      <div style="display:flex; gap:8px; margin-top:8px;">
+        <button type="button" class="btn-sub" style="flex:1; color:#dc2626;" onclick="resetThemeImages()">초기화</button>
+        <button type="button" class="btn-primary" style="flex:1;" onclick="closeModal('themeModal')">완료</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="backupModal" class="modal-backdrop">
+    <div class="modal-card">
+      <h3 style="margin:0 0 8px; font-size:17px; font-weight:800;">💾 자연어 백업 및 복원</h3>
+      <textarea id="naturalBackupText" class="input-box" rows="8" style="font-family:monospace; font-size:12px;"></textarea>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+        <button type="button" class="btn-primary" onclick="copyNaturalText()">📋 텍스트 복사</button>
+        <button type="button" class="btn-primary" style="background:#15803d;" onclick="restoreFromNaturalText()">🔄 복원하기</button>
+      </div>
+      <button type="button" class="btn-sub" style="width:100%; margin-top:8px;" onclick="closeModal('backupModal')">닫기</button>
+    </div>
+  </div>
+
+  <script>
+    const mem = {};
+    function safeGet(k, def) {
+      try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : def; } catch (e) { return mem[k] || def; }
+    }
+    function safeSet(k, v) {
+      try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { mem[k] = v; }
+    }
+    function fmtDate(d) {
+      return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    }
+
+    const now = new Date();
+    const rawTasks = safeGet('mp_tasks_v1', []);
+    const rawTheme = safeGet('mp_theme_v1', {});
+
+    let state = {
+      viewMode: 'month',
+      currentDate: new Date(now.getFullYear(), now.getMonth(), now.getDate()),
+      selectedDate: fmtDate(now),
+      tasks: Array.isArray(rawTasks) ? rawTasks : [],
+      dayStickers: safeGet('mp_stickers_v1', {}) || {},
+      theme: {
+        appBg: rawTheme.appBg || '',
+        headerBg: rawTheme.headerBg || '',
+        opacity: rawTheme.opacity || 0.92,
+        bannerHeight: rawTheme.bannerHeight || 140
+      },
+      fileName: safeGet('mp_filename_v1', '마이플래너_백업데이터') || '마이플래너_백업데이터'
+    };
+
+    function persistAll() {
+      safeSet('mp_tasks_v1', state.tasks);
+      safeSet('mp_stickers_v1', state.dayStickers);
+      safeSet('mp_theme_v1', state.theme);
+      safeSet('mp_filename_v1', state.fileName);
+      updateFooter();
+    }
+
+    function applyTheme() {
+      const bgLayer = document.getElementById('bgLayer');
+      const appShell = document.getElementById('appShell');
+      const bannerBox = document.getElementById('bannerBox');
+      const bannerTxt = document.getElementById('bannerTxt');
+      const bannerBadge = document.getElementById('bannerBadge');
+      const pathDisplay = document.getElementById('pathDisplay');
+      const fileInput = document.getElementById('customFileName');
+
+      if (fileInput) fileInput.value = state.fileName;
+      if (pathDisplay) pathDisplay.textContent = '저장소: 내부저장소 (' + state.fileName + ')';
+
+      if (state.theme.appBg) {
+        bgLayer.style.backgroundImage = 'url(' + state.theme.appBg + ')';
+        appShell.style.backgroundColor = 'rgba(255,255,255,' + (state.theme.opacity || 0.92) + ')';
+      } else {
+        bgLayer.style.backgroundImage = 'none';
+        appShell.style.backgroundColor = '#ffffff';
+      }
+
+      const bh = state.theme.bannerHeight || 140;
+      bannerBox.style.height = bh + 'px';
+      if (state.theme.headerBg) {
+        bannerBox.style.backgroundImage = 'url(' + state.theme.headerBg + ')';
+        bannerBox.classList.add('has-img');
+        bannerTxt.style.display = 'none';
+        bannerBadge.style.display = 'block';
+      } else {
+        bannerBox.style.backgroundImage = 'none';
+        bannerBox.classList.remove('has-img');
+        bannerTxt.style.display = 'block';
+        bannerBadge.style.display = 'none';
+      }
+    }
+
+    function compressImage(file, maxW, q, cb) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const c = document.createElement('canvas');
+          let w = img.width, h = img.height;
+          if (w > maxW) { h = Math.round(h * (maxW / w)); w = maxW; }
+          c.width = w; c.height = h;
+          c.getContext('2d').drawImage(img, 0, 0, w, h);
+          cb(c.toDataURL('image/jpeg', q));
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    window.uploadThemeImage = function(e, type) {
+      const f = e.target.files && e.target.files[0];
+      if (!f) return;
+      compressImage(f, 850, 0.78, function(url) {
+        state.theme[type] = url;
+        persistAll();
+        applyTheme();
+      });
+      e.target.value = '';
+    };
+
+    window.updateBannerHeight = function(v) { state.theme.bannerHeight = parseInt(v); persistAll(); applyTheme(); };
+    window.updateBgOpacity = function(v) { state.theme.opacity = parseFloat(v); persistAll(); applyTheme(); };
+    window.resetThemeImages = function() {
+      state.theme = { appBg: '', headerBg: '', opacity: 0.92, bannerHeight: 140 };
+      state.dayStickers = {};
+      persistAll(); applyTheme(); render();
+    };
+    window.triggerDaySticker = function() { document.getElementById('dayStickerInput').click(); };
+    window.handleDayStickerUpload = function(e) {
+      const f = e.target.files && e.target.files[0];
+      if (!f) return;
+      compressImage(f, 300, 0.65, function(url) {
+        state.dayStickers[state.selectedDate] = url;
+        persistAll(); render();
+      });
+      e.target.value = '';
+    };
+    window.removeDaySticker = function(d) { delete state.dayStickers[d]; persistAll(); render(); };
+
+    window.setViewMode = function(m) {
+      state.viewMode = m;
+      ['year', 'month', 'week', 'day'].forEach(function(k) {
+        const b = document.getElementById('tab-' + k);
+        if (b) b.className = 'view-tab' + (k === m ? ' active' : '');
+      });
+      render();
+    };
+
+    window.movePeriod = function(dir) {
+      const d = state.currentDate;
+      if (state.viewMode === 'year') d.setFullYear(d.getFullYear() + dir);
+      else if (state.viewMode === 'month') d.setMonth(d.getMonth() + dir);
+      else if (state.viewMode === 'week') d.setDate(d.getDate() + dir * 7);
+      else { d.setDate(d.getDate() + dir); state.selectedDate = fmtDate(d); }
+      render();
+    };
+
+    window.goToday = function() {
+      const t = new Date();
+      state.currentDate = new Date(t.getFullYear(), t.getMonth(), t.getDate());
+      state.selectedDate = fmtDate(t);
+      render();
+    };
+
+    window.selectDate = function(ds) {
+      state.selectedDate = ds;
+      const p = ds.split('-');
+      state.currentDate = new Date(parseInt(p[0]), parseInt(p[1]) - 1, parseInt(p[2]));
+      render();
+    };
+
+    function render() {
+      const y = state.currentDate.getFullYear();
+      const m = state.currentDate.getMonth();
+      const titleEl = document.getElementById('periodTitle');
+      const mainEl = document.getElementById('mainView');
+
+      if (state.viewMode === 'year') {
+        titleEl.textContent = y + '년 연간 현황';
+        mainEl.innerHTML = renderYearView(y);
+      } else if (state.viewMode === 'month') {
+        titleEl.textContent = y + '년 ' + (m + 1) + '월';
+        mainEl.innerHTML = renderMonthView(y, m) + renderSelectedDayPanel(state.selectedDate);
+      } else if (state.viewMode === 'week') {
+        titleEl.textContent = y + '년 ' + (m + 1) + '월 (주간)';
+        mainEl.innerHTML = renderWeekView(state.currentDate);
+      } else {
+        titleEl.textContent = state.selectedDate + ' (일간)';
+        mainEl.innerHTML = renderSelectedDayPanel(state.selectedDate);
+      }
+      updateFooter();
+    }
+
+    function renderYearView(y) {
+      let h = '<div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px; padding:12px 16px;">';
+      for (let m = 0; m < 12; m++) {
+        const pf = y + '-' + String(m + 1).padStart(2, '0');
+        const mt = state.tasks.filter(function(t) { return (t.date || '').indexOf(pf) === 0; });
+        const dn = mt.filter(function(t) { return t.status === 'done'; }).length;
+        const pct = mt.length ? Math.round((dn / mt.length) * 100) : 0;
+        h += '<div onclick="jumpToMonth(' + y + ',' + m + ')" style="background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:12px; cursor:pointer;">' +
+             '<div style="font-size:15px; font-weight:800;">' + (m + 1) + '월</div>' +
+             '<div style="font-size:11px; color:#64748b; margin-top:4px;">일정 ' + mt.length + '개</div>' +
+             '<div style="font-size:11px; font-weight:700; color:#4f46e5; margin-top:4px;">달성 ' + pct + '%</div></div>';
+      }
+      return h + '</div>';
+    }
+
+    window.jumpToMonth = function(y, m) {
+      state.currentDate = new Date(y, m, 1);
+      state.selectedDate = fmtDate(state.currentDate);
+      setViewMode('month');
+    };
+
+    function renderMonthView(y, m) {
+      const wds = ['일', '월', '화', '수', '목', '금', '토'];
+      let h = '<div class="cal-grid">';
+      wds.forEach(function(w, i) {
+        const c = i === 0 ? '#ef4444' : i === 6 ? '#3b82f6' : '#64748b';
+        h += '<div class="weekday" style="color:' + c + ';">' + w + '</div>';
+      });
+      const fd = new Date(y, m, 1).getDay();
+      const ld = new Date(y, m + 1, 0).getDate();
+      const pld = new Date(y, m, 0).getDate();
+      const tStr = fmtDate(new Date());
+
+      for (let i = fd - 1; i >= 0; i--) {
+        h += '<div class="day-cell" style="opacity:0.3;"><div class="day-num">' + (pld - i) + '</div></div>';
+      }
+      for (let d = 1; d <= ld; d++) {
+        const ds = y + '-' + String(m + 1).padStart(2, '0') + '-' + String(d).padStart(2, '0');
+        const dow = new Date(y, m, d).getDay();
+        const isSel = ds === state.selectedDate;
+        const isTod = ds === tStr;
+        const st = state.dayStickers[ds];
+        const dts = state.tasks.filter(function(t) { return t.date === ds; });
+        const nc = dow === 0 ? '#ef4444' : dow === 6 ? '#2563eb' : '#1e293b';
+        const bg = st ? 'background-image:url(' + st + ');' : '';
+        let dots = '';
+        dts.slice(0, 4).forEach(function(t) {
+          const dc = t.status === 'done' ? '#10b981' : t.status === 'doing' ? '#3b82f6' : '#f59e0b';
+          dots += '<span class="dot" style="background:' + dc + ';"></span>';
+        });
+        h += '<div class="day-cell ' + (isSel ? 'selected ' : '') + (isTod ? 'today' : '') + '" style="' + bg + '" onclick="selectDate(\'' + ds + '\')">' +
+             '<div class="day-num" style="color:' + nc + ';">' + d + '</div><div class="dot-row">' + dots + '</div></div>';
+      }
+      return h + '</div>';
+    }
+
+    function renderWeekView(ref) {
+      const st = new Date(ref);
+      st.setDate(st.getDate() - st.getDay());
+      const wds = ['일', '월', '화', '수', '목', '금', '토'];
+      let h = '<div style="padding:8px 16px; display:flex; flex-direction:column; gap:10px;">';
+      for (let i = 0; i < 7; i++) {
+        const cur = new Date(st);
+        cur.setDate(st.getDate() + i);
+        const ds = fmtDate(cur);
+        const dts = state.tasks.filter(function(t) { return t.date === ds; });
+        h += '<div style="background:#fff; border:1px solid ' + (ds === state.selectedDate ? '#4f46e5' : '#e2e8f0') + '; border-radius:14px; padding:12px;" onclick="selectDate(\'' + ds + '\')">' +
+             '<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">' +
+             '<span style="font-weight:800; font-size:14px;">' + ds + ' (' + wds[i] + ')</span>' +
+             '<button type="button" class="btn-mini" style="background:#eef2ff; color:#4f46e5;" onclick="event.stopPropagation(); selectDate(\'' + ds + '\'); openTaskModal();">+ 추가</button></div>' +
+             (dts.length === 0 ? '<div style="font-size:12px; color:#94a3b8;">등록된 일정이 없습니다.</div>' : dts.map(renderTaskItem).join('')) + '</div>';
+      }
+      return h + '</div>';
+    }
+
+    function renderSelectedDayPanel(ds) {
+      const dts = state.tasks.filter(function(t) { return t.date === ds; }).sort(function(a, b) { return (a.time || '').localeCompare(b.time || ''); });
+      const st = state.dayStickers[ds];
+      return '<div style="margin:12px 16px 0; padding-top:10px; border-top:1px solid #e2e8f0;">' +
+        '<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; gap:6px;">' +
+        '<button type="button" onclick="triggerDaySticker()" style="background:#fdf2f8; color:#be185d; border:1px solid #fbcfe8; padding:6px 12px; border-radius:20px; font-size:12px; font-weight:700; cursor:pointer;">✨ 선택 날짜에 사진/스티커 넣기</button>' +
+        (st ? '<button type="button" onclick="removeDaySticker(\'' + ds + '\')" style="background:#fee2e2; color:#dc2626; border:none; padding:5px 10px; border-radius:14px; font-size:11px; font-weight:700; cursor:pointer;">스티커 삭제</button>' : '') +
+        '</div><div style="background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:14px;">' +
+        '<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">' +
+        '<div style="font-size:15px; font-weight:800;">📌 ' + ds + ' 일정 (' + dts.length + '개)</div>' +
+        '<button type="button" class="btn-mini" style="background:#4f46e5; color:#fff;" onclick="openTaskModal()">+ 새 일정</button></div>' +
+        (dts.length === 0 ? '<div style="text-align:center; padding:20px 0; color:#94a3b8; font-size:13px;">등록된 일정이 없습니다.<br>+ 버튼을 눌러 추가해 보세요!</div>' : '<div style="display:flex; flex-direction:column; gap:8px;">' + dts.map(renderTaskItem).join('') + '</div>') +
+        '</div></div>';
+    }
+
+    function renderTaskItem(t) {
+      const bm = { todo: { tx: '대기', bg: '#fef3c7', c: '#b45309' }, doing: { tx: '진행중', bg: '#dbeafe', c: '#1d4ed8' }, done: { tx: '완료', bg: '#d1fae5', c: '#047857' } };
+      const b = bm[t.status] || bm.todo;
+      return '<div style="display:flex; align-items:center; justify-content:space-between; gap:8px; padding:10px; border-radius:12px; background:#f8fafc; border:1px solid #e2e8f0;">' +
+        '<div style="min-width:0; flex:1;" onclick="cycleStatus(\'' + t.id + '\')">' +
+        '<div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">' +
+        '<span style="font-size:11px; font-weight:800; padding:2px 7px; border-radius:6px; background:' + b.bg + '; color:' + b.c + ';">' + b.tx + '</span>' +
+        '<span style="font-size:12px; font-weight:700; color:#4f46e5;">' + (t.time || '09:00') + '</span>' +
+        '<span style="font-size:14px; font-weight:700; ' + (t.status === 'done' ? 'text-decoration:line-through; opacity:0.6;' : '') + '">' + t.title + '</span></div>' +
+        (t.memo ? '<div style="font-size:12px; color:#64748b; margin-top:3px;">' + t.memo + '</div>' : '') + '</div>' +
+        '<div style="display:flex; gap:4px; flex-shrink:0;">' +
+        '<button type="button" class="btn-mini" style="background:#fef3c7; color:#b45309; padding:5px 7px;" onclick="exportICS(\'' + t.id + '\')">📲폰알람</button>' +
+        '<button type="button" class="btn-mini" style="background:#e2e8f0; color:#334155; padding:5px 7px;" onclick="editTask(\'' + t.id + '\')">수정</button>' +
+        '<button type="button" class="btn-mini" style="background:#fee2e2; color:#dc2626; padding:5px 7px;" onclick="deleteTask(\'' + t.id + '\')">삭제</button></div></div>';
+    }
+
+    window.openTaskModal = function() {
+      document.getElementById('taskModalTitle').textContent = '새 일정 추가';
+      document.getElementById('editTaskId').value = '';
+      document.getElementById('taskDateInput').value = state.selectedDate;
+      document.getElementById('taskTimeInput').value = '09:00';
+      document.getElementById('taskTitleInput').value = '';
+      document.getElementById('taskStatusInput').value = 'todo';
+      document.getElementById('taskAlarmInput').value = 'none';
+      document.getElementById('taskMemoInput').value = '';
+      openModal('taskModal');
+    };
+
+    window.editTask = function(id) {
+      const t = state.tasks.find(function(x) { return x.id === id; });
+      if (!t) return;
+      document.getElementById('taskModalTitle').textContent = '일정 수정';
+      document.getElementById('editTaskId').value = t.id;
+      document.getElementById('taskDateInput').value = t.date;
+      document.getElementById('taskTimeInput').value = t.time || '09:00';
+      document.getElementById('taskTitleInput').value = t.title;
+      document.getElementById('taskStatusInput').value = t.status;
+      document.getElementById('taskAlarmInput').value = t.alarm || 'none';
+      document.getElementById('taskMemoInput').value = t.memo || '';
+      openModal('taskModal');
+    };
+
+    window.saveTask = function() {
+      const id = document.getElementById('editTaskId').value;
+      const date = document.getElementById('taskDateInput').value || state.selectedDate;
+      const time = document.getElementById('taskTimeInput').value || '09:00';
+      const title = document.getElementById('taskTitleInput').value.trim();
+      const status = document.getElementById('taskStatusInput').value;
+      const alarm = document.getElementById('taskAlarmInput').value;
+      const memo = document.getElementById('taskMemoInput').value.trim();
+      if (!title) { alert('일정 내용을 입력해 주세요!'); return; }
+      if (id) {
+        const idx = state.tasks.findIndex(function(x) { return x.id === id; });
+        if (idx > -1) state.tasks[idx] = { id: id, date: date, time: time, title: title, status: status, alarm: alarm, memo: memo };
+      } else {
+        state.tasks.push({ id: 't_' + Date.now(), date: date, time: time, title: title, status: status, alarm: alarm, memo: memo });
+      }
+      state.selectedDate = date;
+      persistAll(); closeModal('taskModal'); render();
+    };
+
+    window.deleteTask = function(id) {
+      state.tasks = state.tasks.filter(function(x) { return x.id !== id; });
+      persistAll(); render();
+    };
+
+    window.cycleStatus = function(id) {
+      const t = state.tasks.find(function(x) { return x.id === id; });
+      if (!t) return;
+      const ord = ['todo', 'doing', 'done'];
+      t.status = ord[(ord.indexOf(t.status) + 1) % 3];
+      persistAll(); render();
+    };
+
+    window.loadSampleData = function() {
+      const d = state.selectedDate;
+      state.tasks.push(
+        { id: 't_' + Date.now() + 1, date: d, time: '09:30', title: '오전 업무 및 일정 체크', status: 'done', alarm: '10', memo: '중요 안건' },
+        { id: 't_' + Date.now() + 2, date: d, time: '14:00', title: '외부 미팅 및 자료 검토', status: 'doing', alarm: '30', memo: '노트북 지참' }
+      );
+      persistAll(); render();
+    };
+
+    function updateFooter() {
+      const tot = state.tasks.length;
+      const dn = state.tasks.filter(function(t) { return t.status === 'done'; }).length;
+      const el = document.getElementById('footerSummary');
+      if (el) el.textContent = '🟢 전체 일정 ' + tot + '개 (완료 ' + dn + '개)';
+    }
+
+    function generateNaturalBackup() {
+      if (state.tasks.length === 0) return '등록된 일정이 없습니다.';
+      const grp = {};
+      state.tasks.slice().sort(function(a, b) { return (a.date + a.time).localeCompare(b.date + b.time); }).forEach(function(t) {
+        if (!grp[t.date]) grp[t.date] = [];
+        grp[t.date].push(t);
+      });
+      const sk = { todo: '대기', doing: '진행중', done: '완료' };
+      const lines = ['=== 마이 플래너 일정 백업 ===', ''];
+      Object.keys(grp).forEach(function(d) {
+        lines.push('[' + d + ']');
+        grp[d].forEach(function(t) {
+          lines.push('- ' + (t.time || '09:00') + ' ' + t.title + ' (' + (sk[t.status] || '대기') + ')' + (t.memo ? ' | 메모: ' + t.memo : ''));
+        });
+        lines.push('');
+      });
+      return lines.join('\n');
+    }
+
+    window.openBackupModal = function() {
+      document.getElementById('naturalBackupText').value = generateNaturalBackup();
+      openModal('backupModal');
+    };
+
+    window.copyNaturalText = function() {
+      const el = document.getElementById('naturalBackupText');
+      el.select();
+      try { navigator.clipboard.writeText(el.value); alert('복사되었습니다!'); }
+      catch (e) { document.execCommand('copy'); alert('복사되었습니다!'); }
+    };
+
+    window.restoreFromNaturalText = function() {
+      parseAndRestoreNatural(document.getElementById('naturalBackupText').value);
+      closeModal('backupModal');
+    };
+
+    function parseAndRestoreNatural(raw) {
+      let curDate = state.selectedDate;
+      const res = [];
+      raw.split('\n').forEach(function(line) {
+        const tr = line.trim();
+        const dm = tr.match(/^\[(\d{4}-\d{2}-\d{2})\]/);
+        if (dm) { curDate = dm[1]; return; }
+        const tm = tr.match(/^-\s*(\d{2}:\d{2})\s+(.+?)\s*\((대기|진행중|완료)\)(?:\s*\|\s*메모:\s*(.*))?$/);
+        if (tm) {
+          const sm = { '대기': 'todo', '진행중': 'doing', '완료': 'done' };
+          res.push({ id: 't_' + Date.now() + Math.random().toString(36).slice(2, 5), date: curDate, time: tm[1], title: tm[2].trim(), status: sm[tm[3]] || 'todo', alarm: 'none', memo: tm[4] ? tm[4].trim() : '' });
+        }
+      });
+      if (res.length > 0) { state.tasks = res; persistAll(); render(); alert(res.length + '개 일정 복원 완료!'); }
+      else alert('복원할 일정을 찾지 못했습니다.');
+    }
+
+    window.updatePathName = function() {
+      state.fileName = document.getElementById('customFileName').value.trim() || '마이플래너_백업데이터';
+      persistAll(); applyTheme();
+    };
+
+    window.saveToFileSystem = async function(ext) {
+      updatePathName();
+      const content = ext === 'json' ? JSON.stringify({ tasks: state.tasks, dayStickers: state.dayStickers, theme: state.theme }, null, 2) : generateNaturalBackup();
+      const fn = state.fileName + '.' + ext;
+      if (window.showSaveFilePicker) {
+        try {
+          const h = await window.showSaveFilePicker({ suggestedName: fn });
+          const w = await h.createWritable();
+          await w.write(content); await w.close();
+          alert('저장 완료: ' + fn); return;
+        } catch (err) { if (err.name === 'AbortError') return; }
+      }
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([content], { type: 'text/plain;charset=utf-8' }));
+      a.download = fn; document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    };
+
+    window.handleFileRestore = function(e) {
+      const f = e.target.files && e.target.files[0];
+      if (!f) return;
+      const r = new FileReader();
+      r.onload = function(ev) {
+        const tx = ev.target.result;
+        if (f.name.endsWith('.json')) {
+          try {
+            const o = JSON.parse(tx);
+            if (o.tasks) state.tasks = o.tasks;
+            if (o.dayStickers) state.dayStickers = o.dayStickers;
+            if (o.theme) state.theme = o.theme;
+            persistAll(); applyTheme(); render(); alert('복원 완료!');
+          } catch (err) { alert('잘못된 파일입니다.'); }
+        } else parseAndRestoreNatural(tx);
+        closeModal('pathModal');
+      };
+      r.readAsText(f); e.target.value = '';
+    };
+
+    function playBeepAlarm() {
+      try {
+        const Ctx = window.AudioContext || window.webkitAudioContext;
+        const ctx = new Ctx();
+        [523.25, 659.25, 783.99, 1046.5].forEach(function(freq, i) {
+          const o = ctx.createOscillator(), g = ctx.createGain();
+          o.frequency.value = freq;
+          g.gain.setValueAtTime(0.25, ctx.currentTime + i * 0.18);
+          g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + (i + 1) * 0.18);
+          o.connect(g); g.connect(ctx.destination);
+          o.start(ctx.currentTime + i * 0.18); o.stop(ctx.currentTime + (i + 1) * 0.18);
+        });
+        if (navigator.vibrate) navigator.vibrate([300, 150, 300]);
+      } catch (e) {}
+    }
+
+    window.requestAlarmPermission = function() {
+      if (!('Notification' in window)) { alert('이 브라우저는 알림을 지원하지 않습니다.'); return; }
+      Notification.requestPermission().then(function(p) { alert(p === 'granted' ? '알림 허용됨!' : '알림 거부됨'); });
+    };
+
+    window.testAlarmIn5Sec = function() {
+      closeModal('alarmModal');
+      setTimeout(function() { playBeepAlarm(); alert('🔔 [알람 테스트] 지정된 시간이 되었습니다!'); }, 5000);
+    };
+
+    window.exportICS = function(id) {
+      const t = state.tasks.find(function(x) { return x.id === id; });
+      if (!t) return;
+      const dc = t.date.replace(/-/g, ''), tc = (t.time || '09:00').replace(':', '') + '00';
+      const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'BEGIN:VEVENT', 'DTSTART:' + dc + 'T' + tc, 'DTEND:' + dc + 'T' + tc, 'SUMMARY:' + t.title, 'DESCRIPTION:' + (t.memo || ''), 'BEGIN:VALARM', 'TRIGGER:-PT10M', 'ACTION:DISPLAY', 'DESCRIPTION:Reminder', 'END:VALARM', 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
+      a.download = t.title + '.ics'; document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    };
+
+    window.openModal = function(id) { document.getElementById(id).classList.add('open'); };
+    window.closeModal = function(id) { document.getElementById(id).classList.remove('open'); };
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() { navigator.serviceWorker.register('./sw.js').catch(function(){}); });
+    }
+
+    applyTheme();
+    render();
+  </script>
+</body>
+</html>
